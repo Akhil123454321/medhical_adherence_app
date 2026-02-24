@@ -1,0 +1,1602 @@
+[
+  {
+    "date": "2025-03-31",
+    "userId": "user-1",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T16:15:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-2",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T14:15:00Z",
+    "reportTimestamp": "2025-03-31T09:48:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-3",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T10:14:00Z",
+    "reportTimestamp": "2025-03-31T10:19:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-4",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T14:50:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-5",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T14:27:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-6",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T20:47:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-7",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T15:20:00Z",
+    "reportTimestamp": "2025-03-31T13:16:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-8",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T12:03:00Z",
+    "reportTimestamp": "2025-03-31T15:09:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-9",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T10:03:00Z",
+    "reportTimestamp": "2025-03-31T21:32:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-10",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T13:42:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-11",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T14:44:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-12",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T17:05:00Z",
+    "reportTimestamp": "2025-03-31T08:08:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-13",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T10:30:00Z",
+    "reportTimestamp": "2025-03-31T15:06:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-14",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T17:15:00Z",
+    "reportTimestamp": "2025-03-31T17:54:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-15",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T19:28:00Z",
+    "reportTimestamp": "2025-03-31T21:19:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-16",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T16:33:00Z",
+    "reportTimestamp": "2025-03-31T19:31:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-17",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T11:26:00Z",
+    "reportTimestamp": "2025-03-31T15:39:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-18",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T13:00:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-19",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T09:25:00Z",
+    "reportTimestamp": "2025-03-31T12:24:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-20",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T16:56:00Z",
+    "reportTimestamp": "2025-03-31T08:28:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-21",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T09:24:00Z",
+    "reportTimestamp": "2025-03-31T09:48:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-22",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T11:23:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-23",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T10:17:00Z",
+    "reportTimestamp": "2025-03-31T21:11:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-24",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T17:07:00Z",
+    "reportTimestamp": "2025-03-31T13:13:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-25",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T16:31:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-26",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T11:23:00Z",
+    "reportTimestamp": "2025-03-31T13:25:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-27",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T09:43:00Z",
+    "reportTimestamp": "2025-03-31T13:00:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-28",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T10:52:00Z",
+    "reportTimestamp": "2025-03-31T20:57:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-29",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T20:48:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-30",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T15:40:00Z",
+    "reportTimestamp": "2025-03-31T20:07:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-31",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T19:07:00Z",
+    "reportTimestamp": "2025-03-31T13:02:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-32",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T19:15:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-33",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T16:24:00Z",
+    "reportTimestamp": "2025-03-31T21:34:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-34",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T19:29:00Z",
+    "reportTimestamp": "2025-03-31T14:05:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-35",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-03-31T12:23:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-36",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T13:38:00Z",
+    "reportTimestamp": "2025-03-31T15:03:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-37",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T09:48:00Z",
+    "reportTimestamp": "2025-03-31T10:02:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-38",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T19:32:00Z",
+    "reportTimestamp": "2025-03-31T08:38:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-39",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T12:22:00Z",
+    "reportTimestamp": "2025-03-31T19:50:00Z"
+  },
+  {
+    "date": "2025-03-31",
+    "userId": "user-40",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-03-31T08:43:00Z",
+    "reportTimestamp": "2025-03-31T11:36:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-1",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T15:52:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-2",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T13:53:00Z",
+    "reportTimestamp": "2025-04-01T08:02:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-3",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T12:32:00Z",
+    "reportTimestamp": "2025-04-01T17:35:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-4",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T21:25:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-5",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T19:58:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-6",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T12:18:00Z",
+    "reportTimestamp": "2025-04-01T08:55:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-7",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T16:51:00Z",
+    "reportTimestamp": "2025-04-01T10:28:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-8",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T11:25:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-9",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T17:37:00Z",
+    "reportTimestamp": "2025-04-01T14:48:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-10",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T10:39:00Z",
+    "reportTimestamp": "2025-04-01T11:22:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-11",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T09:36:00Z",
+    "reportTimestamp": "2025-04-01T13:07:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-12",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T12:55:00Z",
+    "reportTimestamp": "2025-04-01T08:05:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-13",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T18:31:00Z",
+    "reportTimestamp": "2025-04-01T08:47:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-14",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T08:16:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-15",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T18:05:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-16",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T14:46:00Z",
+    "reportTimestamp": "2025-04-01T21:17:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-17",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T14:39:00Z",
+    "reportTimestamp": "2025-04-01T11:24:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-18",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T11:40:00Z",
+    "reportTimestamp": "2025-04-01T12:29:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-19",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T16:46:00Z",
+    "reportTimestamp": "2025-04-01T20:26:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-20",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T09:26:00Z",
+    "reportTimestamp": "2025-04-01T18:57:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-21",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T14:00:00Z",
+    "reportTimestamp": "2025-04-01T21:32:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-22",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T12:26:00Z",
+    "reportTimestamp": "2025-04-01T10:08:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-23",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T17:41:00Z",
+    "reportTimestamp": "2025-04-01T18:20:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-24",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T15:13:00Z",
+    "reportTimestamp": "2025-04-01T18:39:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-25",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T19:56:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-26",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T11:15:00Z",
+    "reportTimestamp": "2025-04-01T15:46:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-27",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T12:03:00Z",
+    "reportTimestamp": "2025-04-01T10:19:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-28",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T15:46:00Z",
+    "reportTimestamp": "2025-04-01T11:37:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-29",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T20:35:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-30",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T19:43:00Z",
+    "reportTimestamp": "2025-04-01T13:28:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-31",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-32",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-33",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T17:04:00Z",
+    "reportTimestamp": "2025-04-01T21:13:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-34",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T10:02:00Z",
+    "reportTimestamp": "2025-04-01T15:31:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-35",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T18:47:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-36",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T10:04:00Z",
+    "reportTimestamp": "2025-04-01T21:12:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-37",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T14:49:00Z",
+    "reportTimestamp": "2025-04-01T10:42:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-38",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T10:58:00Z",
+    "reportTimestamp": "2025-04-01T09:57:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-39",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-01T17:58:00Z",
+    "reportTimestamp": "2025-04-01T11:23:00Z"
+  },
+  {
+    "date": "2025-04-01",
+    "userId": "user-40",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-01T18:07:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-1",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T10:22:00Z",
+    "reportTimestamp": "2025-04-02T18:18:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-2",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T09:18:00Z",
+    "reportTimestamp": "2025-04-02T21:28:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-3",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T17:31:00Z",
+    "reportTimestamp": "2025-04-02T17:18:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-4",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T18:36:00Z",
+    "reportTimestamp": "2025-04-02T14:48:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-5",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T11:42:00Z",
+    "reportTimestamp": "2025-04-02T08:48:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-6",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T12:05:00Z",
+    "reportTimestamp": "2025-04-02T13:45:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-7",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T18:15:00Z",
+    "reportTimestamp": "2025-04-02T15:48:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-8",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T15:02:00Z",
+    "reportTimestamp": "2025-04-02T17:49:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-9",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T17:28:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-10",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T19:12:00Z",
+    "reportTimestamp": "2025-04-02T09:43:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-11",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T12:28:00Z",
+    "reportTimestamp": "2025-04-02T19:44:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-12",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T09:23:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-13",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T13:12:00Z",
+    "reportTimestamp": "2025-04-02T17:06:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-14",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T19:10:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-15",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T09:16:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-16",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T08:04:00Z",
+    "reportTimestamp": "2025-04-02T13:18:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-17",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T15:08:00Z",
+    "reportTimestamp": "2025-04-02T10:55:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-18",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T13:37:00Z",
+    "reportTimestamp": "2025-04-02T13:44:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-19",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T16:35:00Z",
+    "reportTimestamp": "2025-04-02T11:24:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-20",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T17:32:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-21",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T13:13:00Z",
+    "reportTimestamp": "2025-04-02T16:48:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-22",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T15:44:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-23",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T18:53:00Z",
+    "reportTimestamp": "2025-04-02T13:46:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-24",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T10:02:00Z",
+    "reportTimestamp": "2025-04-02T17:26:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-25",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T15:50:00Z",
+    "reportTimestamp": "2025-04-02T15:50:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-26",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T09:57:00Z",
+    "reportTimestamp": "2025-04-02T14:36:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-27",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T09:13:00Z",
+    "reportTimestamp": "2025-04-02T20:51:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-28",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T18:03:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-29",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T13:31:00Z",
+    "reportTimestamp": "2025-04-02T18:25:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-30",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T16:59:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-31",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T19:20:00Z",
+    "reportTimestamp": "2025-04-02T21:03:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-32",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T17:54:00Z",
+    "reportTimestamp": "2025-04-02T17:18:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-33",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T08:06:00Z",
+    "reportTimestamp": "2025-04-02T08:01:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-34",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T08:04:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-35",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T15:16:00Z",
+    "reportTimestamp": "2025-04-02T13:48:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-36",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T19:07:00Z",
+    "reportTimestamp": "2025-04-02T14:19:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-37",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T17:03:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-38",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-02T12:05:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-39",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T10:55:00Z",
+    "reportTimestamp": "2025-04-02T14:28:00Z"
+  },
+  {
+    "date": "2025-04-02",
+    "userId": "user-40",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-02T09:10:00Z",
+    "reportTimestamp": "2025-04-02T09:39:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-1",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T14:26:00Z",
+    "reportTimestamp": "2025-04-03T12:16:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-2",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T09:50:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-3",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T14:16:00Z",
+    "reportTimestamp": "2025-04-03T13:53:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-4",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T16:29:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-5",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T08:46:00Z",
+    "reportTimestamp": "2025-04-03T15:21:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-6",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T14:04:00Z",
+    "reportTimestamp": "2025-04-03T18:00:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-7",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T12:31:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-8",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T14:49:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-9",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T12:04:00Z",
+    "reportTimestamp": "2025-04-03T13:30:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-10",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T11:39:00Z",
+    "reportTimestamp": "2025-04-03T14:48:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-11",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:16:00Z",
+    "reportTimestamp": "2025-04-03T17:59:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-12",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T11:21:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-13",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T15:51:00Z",
+    "reportTimestamp": "2025-04-03T12:10:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-14",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T16:55:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-15",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T12:05:00Z",
+    "reportTimestamp": "2025-04-03T09:28:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-16",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:59:00Z",
+    "reportTimestamp": "2025-04-03T10:57:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-17",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T19:55:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-18",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T17:30:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-19",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T17:39:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-20",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T16:51:00Z",
+    "reportTimestamp": "2025-04-03T08:52:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-21",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-22",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T12:36:00Z",
+    "reportTimestamp": "2025-04-03T10:13:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-23",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T08:05:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-24",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T09:10:00Z",
+    "reportTimestamp": "2025-04-03T16:08:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-25",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T18:08:00Z",
+    "reportTimestamp": "2025-04-03T08:27:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-26",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:14:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-27",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T10:27:00Z",
+    "reportTimestamp": "2025-04-03T08:12:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-28",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-29",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T11:43:00Z",
+    "reportTimestamp": "2025-04-03T13:09:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-30",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T19:01:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-31",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T11:00:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-32",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-03T11:40:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-33",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:05:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-34",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T08:14:00Z",
+    "reportTimestamp": "2025-04-03T19:32:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-35",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:23:00Z",
+    "reportTimestamp": "2025-04-03T15:07:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-36",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T15:12:00Z",
+    "reportTimestamp": "2025-04-03T13:44:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-37",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T09:06:00Z",
+    "reportTimestamp": "2025-04-03T15:46:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-38",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T11:18:00Z",
+    "reportTimestamp": "2025-04-03T16:00:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-39",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-03T13:26:00Z",
+    "reportTimestamp": "2025-04-03T13:40:00Z"
+  },
+  {
+    "date": "2025-04-03",
+    "userId": "user-40",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-1",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T19:00:00Z",
+    "reportTimestamp": "2025-04-04T13:39:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-2",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T16:10:00Z",
+    "reportTimestamp": "2025-04-04T17:58:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-3",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T08:42:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-4",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T20:35:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-5",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T14:37:00Z",
+    "reportTimestamp": "2025-04-04T21:55:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-6",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T09:30:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-7",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T15:03:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-8",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T10:14:00Z",
+    "reportTimestamp": "2025-04-04T19:06:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-9",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T14:35:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-10",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T08:23:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-11",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T17:54:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-12",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T11:44:00Z",
+    "reportTimestamp": "2025-04-04T16:24:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-13",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T16:57:00Z",
+    "reportTimestamp": "2025-04-04T13:01:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-14",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T15:14:00Z",
+    "reportTimestamp": "2025-04-04T20:31:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-15",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T17:15:00Z",
+    "reportTimestamp": "2025-04-04T08:01:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-16",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T08:07:00Z",
+    "reportTimestamp": "2025-04-04T12:51:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-17",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T19:04:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-18",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T09:58:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-19",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T14:54:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-20",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T14:38:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-21",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T18:09:00Z",
+    "reportTimestamp": "2025-04-04T18:12:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-22",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T16:36:00Z",
+    "reportTimestamp": "2025-04-04T11:06:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-23",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T12:21:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-24",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T08:15:00Z",
+    "reportTimestamp": "2025-04-04T17:51:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-25",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-26",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T18:28:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-27",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T11:17:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-28",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T18:59:00Z",
+    "reportTimestamp": "2025-04-04T18:59:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-29",
+    "selfReported": false,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T10:57:00Z",
+    "reportTimestamp": null
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-30",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T13:48:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-31",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T14:03:00Z",
+    "reportTimestamp": "2025-04-04T08:54:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-32",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T19:31:00Z",
+    "reportTimestamp": "2025-04-04T17:55:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-33",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T13:34:00Z",
+    "reportTimestamp": "2025-04-04T10:47:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-34",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T18:19:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-35",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T17:39:00Z",
+    "reportTimestamp": "2025-04-04T19:36:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-36",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T15:36:00Z",
+    "reportTimestamp": "2025-04-04T16:42:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-37",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T17:35:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-38",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T14:31:00Z",
+    "reportTimestamp": "2025-04-04T21:16:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-39",
+    "selfReported": true,
+    "capOpened": true,
+    "capTimestamp": "2025-04-04T11:43:00Z",
+    "reportTimestamp": "2025-04-04T13:52:00Z"
+  },
+  {
+    "date": "2025-04-04",
+    "userId": "user-40",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2025-04-04T20:31:00Z"
+  }
+]

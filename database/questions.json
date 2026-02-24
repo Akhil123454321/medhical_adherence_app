@@ -1,0 +1,68 @@
+[
+  {
+    "id": "q-1",
+    "text": "What is your current GPA?",
+    "type": "number",
+    "category": "Academic",
+    "cohortIds": [
+      "cohort-1",
+      "cohort-2"
+    ]
+  },
+  {
+    "id": "q-2",
+    "text": "Have you ever taken a course in public health?",
+    "type": "boolean",
+    "category": "Academic",
+    "cohortIds": [
+      "cohort-1",
+      "cohort-3"
+    ]
+  },
+  {
+    "id": "q-3",
+    "text": "What year are you in your program?",
+    "type": "select",
+    "category": "Academic",
+    "options": [
+      "1st Year",
+      "2nd Year",
+      "3rd Year",
+      "4th Year"
+    ],
+    "cohortIds": [
+      "cohort-1"
+    ]
+  },
+  {
+    "id": "q-4",
+    "text": "How many hours per week do you work outside of school?",
+    "type": "number",
+    "category": "Lifestyle",
+    "cohortIds": [
+      "cohort-2"
+    ]
+  },
+  {
+    "id": "q-5",
+    "text": "Do you currently take any daily medications?",
+    "type": "boolean",
+    "category": "Health",
+    "cohortIds": [
+      "cohort-2"
+    ]
+  },
+  {
+    "id": "q-6",
+    "text": "What is your primary mode of transportation?",
+    "type": "select",
+    "category": "Lifestyle",
+    "options": [
+      "Car",
+      "Bus",
+      "Bicycle",
+      "Walking"
+    ],
+    "cohortIds": []
+  }
+]

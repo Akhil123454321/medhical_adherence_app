@@ -1,0 +1,38 @@
+[
+  {
+    "id": "act-1",
+    "message": "Cohort 'IU Med School Pilot' was activated",
+    "timestamp": "2025-03-31T08:00:00Z",
+    "type": "cohort"
+  },
+  {
+    "id": "act-2",
+    "message": "60 users enrolled in IU Med School Pilot",
+    "timestamp": "2025-03-31T08:15:00Z",
+    "type": "user"
+  },
+  {
+    "id": "act-3",
+    "message": "Caps 1-60 assigned to IU cohort patients",
+    "timestamp": "2025-03-31T08:30:00Z",
+    "type": "cap"
+  },
+  {
+    "id": "act-4",
+    "message": "Caps 71, 72 marked as broken",
+    "timestamp": "2025-03-30T14:00:00Z",
+    "type": "cap"
+  },
+  {
+    "id": "act-5",
+    "message": "Cohort 'Purdue Pharmacy Spring' created",
+    "timestamp": "2025-03-28T10:00:00Z",
+    "type": "cohort"
+  },
+  {
+    "id": "act-6",
+    "message": "3 new questions added to question bank",
+    "timestamp": "2025-03-27T16:00:00Z",
+    "type": "system"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cohort-1",
+    "name": "IU Med School Pilot",
+    "institution": "IU School of Medicine",
+    "startDate": "2025-03-31",
+    "endDate": "2025-04-04",
+    "description": "First pilot cohort with IU medical students",
+    "status": "active",
+    "capRangeStart": 1,
+    "capRangeEnd": 91,
+    "participantCount": 91,
+    "questionIds": [
+      "q-1",
+      "q-2",
+      "q-3"
+    ]
+  },
+  {
+    "id": "cohort-2",
+    "name": "Purdue Pharmacy Spring",
+    "institution": "Purdue Pharmacy School",
+    "startDate": "2025-04-27",
+    "endDate": "2025-05-02",
+    "description": "Purdue pharmacy students cohort",
+    "status": "upcoming",
+    "capRangeStart": 92,
+    "capRangeEnd": 200,
+    "participantCount": 0,
+    "questionIds": [
+      "q-1",
+      "q-4",
+      "q-5"
+    ]
+  },
+  {
+    "id": "cohort-3",
+    "name": "Kenya Pilot Program",
+    "institution": "Kenya Medical Program",
+    "startDate": "2025-06-01",
+    "endDate": "2025-06-07",
+    "description": "Pilot program with Kenyan medical students",
+    "status": "upcoming",
+    "capRangeStart": 201,
+    "capRangeEnd": 300,
+    "participantCount": 0,
+    "questionIds": [
+      "q-1",
+      "q-2"
+    ]
+  }
+]
