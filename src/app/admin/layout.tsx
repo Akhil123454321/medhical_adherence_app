@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { verifyToken } from "@/lib/auth";
-import Sidebar from "@/components/admin/Sidebar";
-import Topbar from "@/components/admin/Topbar";
+import ClientLayout from "@/components/admin/ClientLayout";
 
 export default async function AdminLayout({
   children,
@@ -21,11 +20,7 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Sidebar />
-      <div className="ml-64">
-        <Topbar userName={userName} />
-        <main className="p-6">{children}</main>
-      </div>
+      <ClientLayout userName={userName}>{children}</ClientLayout>
     </div>
   );
 }

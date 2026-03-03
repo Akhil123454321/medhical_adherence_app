@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Select from "@/components/ui/Select";
 import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
-import { mockUsers, mockCohorts } from "@/lib/mock-data";
-import { User } from "@/lib/types";
+import { mockCohorts } from "@/lib/mock-data";
+import { User, UserRole } from "@/lib/types";
 import { ROLE_LABELS } from "@/constants";
 
 const roleVariant: Record<string, "info" | "success" | "warning" | "default"> = {
@@ -17,31 +18,114 @@ const roleVariant: Record<string, "info" | "success" | "warning" | "default"> = 
 };
 
 export default function UsersPage() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
   const [roleFilter, setRoleFilter] = useState("all");
   const [cohortFilter, setCohortFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
+  // Edit state
+  const [editRole, setEditRole] = useState<UserRole>("patient");
+  const [editChwId, setEditChwId] = useState<string>("");
+  const [editPatientId, setEditPatientId] = useState<string>("");
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/users")
+      .then((r) => r.json())
+      .then((data: User[]) => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   const filteredUsers = useMemo(() => {
-    return mockUsers.filter((user) => {
+    return users.filter((user) => {
       if (roleFilter !== "all" && user.role !== roleFilter) return false;
       if (cohortFilter !== "all" && user.cohortId !== cohortFilter) return false;
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
-        const fullName =
-          `${user.firstName} ${user.lastName}`.toLowerCase();
+        const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
         if (!fullName.includes(query) && !user.email.toLowerCase().includes(query))
           return false;
       }
       return true;
     });
-  }, [roleFilter, cohortFilter, searchQuery]);
+  }, [users, roleFilter, cohortFilter, searchQuery]);
+
+  const chws = useMemo(() => users.filter((u) => u.role === "chw"), [users]);
+  const patients = useMemo(() => users.filter((u) => u.role === "patient"), [users]);
 
   function getUserName(userId: string | null): string {
     if (!userId) return "—";
-    const user = mockUsers.find((u) => u.id === userId);
+    const user = users.find((u) => u.id === userId);
     return user ? `${user.firstName} ${user.lastName}` : userId;
   }
+
+  function openModal(user: User) {
+    setSelectedUser(user);
+    setEditRole(user.role);
+    setEditChwId(user.assignedChwId ?? "");
+    setEditPatientId(user.assignedPatientId ?? "");
+    setSaveError("");
+    setSaveSuccess(false);
+  }
+
+  function closeModal() {
+    setSelectedUser(null);
+    setSaveError("");
+    setSaveSuccess(false);
+  }
+
+  async function saveChanges() {
+    if (!selectedUser) return;
+    setSaving(true);
+    setSaveError("");
+
+    const body: Record<string, unknown> = { role: editRole };
+    if (editRole === "patient") {
+      body.assignedChwId = editChwId || null;
+      body.assignedPatientId = null;
+    } else if (editRole === "chw") {
+      body.assignedPatientId = editPatientId || null;
+      body.assignedChwId = null;
+    } else {
+      body.assignedChwId = null;
+      body.assignedPatientId = null;
+    }
+
+    try {
+      const res = await fetch(`/api/users/${selectedUser.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        setSaveError(err.error ?? "Failed to save");
+        return;
+      }
+      const updated: User = await res.json();
+      setUsers((prev) => prev.map((u) => (u.id === updated.id ? updated : u)));
+      setSelectedUser(updated);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch {
+      setSaveError("Network error");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  const isDirty =
+    selectedUser &&
+    (editRole !== selectedUser.role ||
+      (editChwId || null) !== selectedUser.assignedChwId ||
+      (editPatientId || null) !== selectedUser.assignedPatientId);
 
   return (
     <div className="space-y-6">
@@ -84,7 +168,7 @@ export default function UsersPage() {
             className="w-48"
           />
           <span className="text-sm text-gray-400">
-            {filteredUsers.length} users
+            {loading ? "Loading..." : `${filteredUsers.length} users`}
           </span>
         </div>
 
@@ -98,21 +182,17 @@ export default function UsersPage() {
                 <th className="px-3 py-3 font-medium text-gray-500">Cohort</th>
                 <th className="px-3 py-3 font-medium text-gray-500">Cap ID</th>
                 <th className="px-3 py-3 font-medium text-gray-500">Dosing</th>
-                <th className="px-3 py-3 font-medium text-gray-500">
-                  Paired With
-                </th>
+                <th className="px-3 py-3 font-medium text-gray-500">Paired With</th>
               </tr>
             </thead>
             <tbody>
               {filteredUsers.map((user) => {
-                const cohort = mockCohorts.find(
-                  (c) => c.id === user.cohortId
-                );
+                const cohort = mockCohorts.find((c) => c.id === user.cohortId);
                 return (
                   <tr
                     key={user.id}
                     className="cursor-pointer border-b border-gray-100 hover:bg-gray-50"
-                    onClick={() => setSelectedUser(user)}
+                    onClick={() => openModal(user)}
                   >
                     <td className="px-3 py-2.5 font-medium text-gray-900">
                       {user.firstName} {user.lastName}
@@ -130,9 +210,7 @@ export default function UsersPage() {
                       {user.capId ? `#${user.capId}` : "—"}
                     </td>
                     <td className="px-3 py-2.5 text-gray-500">
-                      {user.dosingRegimen
-                        ? `${user.dosingRegimen} daily`
-                        : "—"}
+                      {user.dosingRegimen ? `${user.dosingRegimen} daily` : "—"}
                     </td>
                     <td className="px-3 py-2.5 text-gray-500">
                       {getUserName(
@@ -151,7 +229,7 @@ export default function UsersPage() {
 
       <Modal
         open={!!selectedUser}
-        onClose={() => setSelectedUser(null)}
+        onClose={closeModal}
         title={
           selectedUser
             ? `${selectedUser.firstName} ${selectedUser.lastName}`
@@ -166,50 +244,108 @@ export default function UsersPage() {
                 <p className="text-gray-900">{selectedUser.email}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Role</p>
-                <Badge variant={roleVariant[selectedUser.role]}>
-                  {ROLE_LABELS[selectedUser.role]}
-                </Badge>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
                 <p className="text-sm font-medium text-gray-500">Cohort</p>
                 <p className="text-gray-900">
                   {mockCohorts.find((c) => c.id === selectedUser.cohortId)
                     ?.name || "—"}
                 </p>
               </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm font-medium text-gray-500">Cap ID</p>
                 <p className="text-gray-900">
                   {selectedUser.capId ? `#${selectedUser.capId}` : "—"}
                 </p>
               </div>
+              {selectedUser.dosingRegimen && (
+                <div>
+                  <p className="text-sm font-medium text-gray-500">
+                    Dosing Regimen
+                  </p>
+                  <p className="text-gray-900">
+                    {selectedUser.dosingRegimen} daily
+                  </p>
+                </div>
+              )}
             </div>
-            {selectedUser.dosingRegimen && (
-              <div>
-                <p className="text-sm font-medium text-gray-500">
-                  Dosing Regimen
-                </p>
-                <p className="text-gray-900">
-                  {selectedUser.dosingRegimen} daily
-                </p>
+
+            <div className="border-t border-gray-100 pt-4">
+              <p className="mb-3 text-sm font-semibold text-gray-700">
+                Edit Role &amp; Assignment
+              </p>
+              <div className="space-y-3">
+                <Select
+                  label="Role"
+                  value={editRole}
+                  onChange={(e) => {
+                    setEditRole(e.target.value as UserRole);
+                    setEditChwId("");
+                    setEditPatientId("");
+                  }}
+                  options={[
+                    { value: "patient", label: "Patient" },
+                    { value: "chw", label: "CHW" },
+                    { value: "admin", label: "Admin" },
+                  ]}
+                />
+
+                {editRole === "patient" && (
+                  <Select
+                    label="Assigned CHW"
+                    value={editChwId}
+                    onChange={(e) => setEditChwId(e.target.value)}
+                    options={[
+                      { value: "", label: "None" },
+                      ...chws.map((u) => ({
+                        value: u.id,
+                        label: `${u.firstName} ${u.lastName}`,
+                      })),
+                    ]}
+                  />
+                )}
+
+                {editRole === "chw" && (
+                  <Select
+                    label="Assigned Patient"
+                    value={editPatientId}
+                    onChange={(e) => setEditPatientId(e.target.value)}
+                    options={[
+                      { value: "", label: "None" },
+                      ...patients.map((u) => ({
+                        value: u.id,
+                        label: `${u.firstName} ${u.lastName}`,
+                      })),
+                    ]}
+                  />
+                )}
+              </div>
+            </div>
+
+            {saveSuccess && (
+              <div className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+                <svg className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+                </svg>
+                Changes saved successfully.
               </div>
             )}
-            <div>
-              <p className="text-sm font-medium text-gray-500">
-                {selectedUser.role === "chw"
-                  ? "Assigned Patient"
-                  : "Assigned CHW"}
-              </p>
-              <p className="text-gray-900">
-                {getUserName(
-                  selectedUser.role === "chw"
-                    ? selectedUser.assignedPatientId
-                    : selectedUser.assignedChwId
-                )}
-              </p>
+
+            {saveError && (
+              <p className="text-sm text-red-600">{saveError}</p>
+            )}
+
+            <div className="flex justify-end gap-2 pt-2">
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button
+                onClick={saveChanges}
+                disabled={!isDirty || saving}
+              >
+                {saving ? "Saving..." : "Save Changes"}
+              </Button>
             </div>
           </div>
         )}

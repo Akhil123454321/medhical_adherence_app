@@ -6,12 +6,14 @@ import {
   Shuffle,
   HelpCircle,
   BarChart3,
+  ScrollText,
 } from "lucide-react";
 
 export const NAV_ITEMS = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Cohorts", href: "/admin/cohorts", icon: FlaskConical },
   { label: "Cap Inventory", href: "/admin/caps", icon: Package },
+  { label: "Cap Logs", href: "/admin/logs", icon: ScrollText },
   { label: "Randomization", href: "/admin/randomization", icon: Shuffle },
   { label: "Question Bank", href: "/admin/questions", icon: HelpCircle },
   { label: "Users", href: "/admin/users", icon: Users },

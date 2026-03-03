@@ -4,12 +4,12 @@
     "firstName": "James",
     "lastName": "Smith",
     "email": "james.smith@example.com",
-    "role": "patient",
+    "role": "chw",
     "cohortId": "cohort-1",
     "capId": 1,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": "user-1"
   },
   {
     "id": "user-2",
@@ -484,12 +484,12 @@
     "firstName": "James",
     "lastName": "Smith",
     "email": "james.smith@example.com",
-    "role": "chw",
+    "role": "patient",
     "cohortId": "cohort-1",
     "capId": null,
     "dosingRegimen": null,
-    "assignedChwId": null,
-    "assignedPatientId": "user-21"
+    "assignedChwId": "user-42",
+    "assignedPatientId": null
   },
   {
     "id": "user-42",
