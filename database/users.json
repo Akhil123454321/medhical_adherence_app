@@ -9,7 +9,9 @@
     "capId": 1,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": "user-1"
+    "assignedPatientId": "user-1",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-2",
@@ -21,7 +23,9 @@
     "capId": 2,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-3",
@@ -33,7 +37,9 @@
     "capId": 3,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-4",
@@ -45,7 +51,9 @@
     "capId": 4,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-5",
@@ -57,7 +65,9 @@
     "capId": 5,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-6",
@@ -69,7 +79,9 @@
     "capId": 6,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-7",
@@ -81,7 +93,9 @@
     "capId": 7,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-8",
@@ -93,7 +107,9 @@
     "capId": 8,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-9",
@@ -105,7 +121,9 @@
     "capId": 9,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-10",
@@ -117,7 +135,9 @@
     "capId": 10,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-11",
@@ -129,7 +149,9 @@
     "capId": 11,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-12",
@@ -141,7 +163,9 @@
     "capId": 12,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-13",
@@ -153,7 +177,9 @@
     "capId": 13,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-14",
@@ -165,7 +191,9 @@
     "capId": 14,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-15",
@@ -177,7 +205,9 @@
     "capId": 15,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-16",
@@ -189,7 +219,9 @@
     "capId": 16,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-17",
@@ -201,7 +233,9 @@
     "capId": 17,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-18",
@@ -213,7 +247,9 @@
     "capId": 18,
     "dosingRegimen": "3x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-19",
@@ -225,7 +261,9 @@
     "capId": 19,
     "dosingRegimen": "1x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-20",
@@ -237,7 +275,9 @@
     "capId": 20,
     "dosingRegimen": "2x",
     "assignedChwId": null,
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-21",
@@ -249,7 +289,9 @@
     "capId": 21,
     "dosingRegimen": "3x",
     "assignedChwId": "user-41",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-22",
@@ -261,7 +303,9 @@
     "capId": 22,
     "dosingRegimen": "1x",
     "assignedChwId": "user-42",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-23",
@@ -273,7 +317,9 @@
     "capId": 23,
     "dosingRegimen": "2x",
     "assignedChwId": "user-43",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-24",
@@ -285,7 +331,9 @@
     "capId": 24,
     "dosingRegimen": "3x",
     "assignedChwId": "user-44",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-25",
@@ -297,7 +345,9 @@
     "capId": 25,
     "dosingRegimen": "1x",
     "assignedChwId": "user-45",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-26",
@@ -309,7 +359,9 @@
     "capId": 26,
     "dosingRegimen": "2x",
     "assignedChwId": "user-46",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-27",
@@ -321,7 +373,9 @@
     "capId": 27,
     "dosingRegimen": "3x",
     "assignedChwId": "user-47",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-28",
@@ -333,7 +387,9 @@
     "capId": 28,
     "dosingRegimen": "1x",
     "assignedChwId": "user-48",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-29",
@@ -345,7 +401,9 @@
     "capId": 29,
     "dosingRegimen": "2x",
     "assignedChwId": "user-49",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-30",
@@ -357,7 +415,9 @@
     "capId": 30,
     "dosingRegimen": "3x",
     "assignedChwId": "user-50",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-31",
@@ -369,7 +429,9 @@
     "capId": 31,
     "dosingRegimen": "1x",
     "assignedChwId": "user-51",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-32",
@@ -381,7 +443,9 @@
     "capId": 32,
     "dosingRegimen": "2x",
     "assignedChwId": "user-52",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-33",
@@ -393,7 +457,9 @@
     "capId": 33,
     "dosingRegimen": "3x",
     "assignedChwId": "user-53",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-34",
@@ -405,7 +471,9 @@
     "capId": 34,
     "dosingRegimen": "1x",
     "assignedChwId": "user-54",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-35",
@@ -417,7 +485,9 @@
     "capId": 35,
     "dosingRegimen": "2x",
     "assignedChwId": "user-55",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-36",
@@ -429,7 +499,9 @@
     "capId": 36,
     "dosingRegimen": "3x",
     "assignedChwId": "user-56",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-37",
@@ -441,7 +513,9 @@
     "capId": 37,
     "dosingRegimen": "1x",
     "assignedChwId": "user-57",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-38",
@@ -453,7 +527,9 @@
     "capId": 38,
     "dosingRegimen": "2x",
     "assignedChwId": "user-58",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-39",
@@ -465,7 +541,9 @@
     "capId": 39,
     "dosingRegimen": "3x",
     "assignedChwId": "user-59",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-40",
@@ -477,7 +555,9 @@
     "capId": 40,
     "dosingRegimen": "1x",
     "assignedChwId": "user-60",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-41",
@@ -489,7 +569,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": "user-42",
-    "assignedPatientId": null
+    "assignedPatientId": null,
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-42",
@@ -501,7 +583,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-22"
+    "assignedPatientId": "user-22",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-43",
@@ -513,7 +597,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-23"
+    "assignedPatientId": "user-23",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-44",
@@ -525,7 +611,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-24"
+    "assignedPatientId": "user-24",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-45",
@@ -537,7 +625,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-25"
+    "assignedPatientId": "user-25",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-46",
@@ -549,7 +639,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-26"
+    "assignedPatientId": "user-26",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-47",
@@ -561,7 +653,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-27"
+    "assignedPatientId": "user-27",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-48",
@@ -573,7 +667,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-28"
+    "assignedPatientId": "user-28",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-49",
@@ -585,7 +681,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-29"
+    "assignedPatientId": "user-29",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-50",
@@ -597,7 +695,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-30"
+    "assignedPatientId": "user-30",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-51",
@@ -609,7 +709,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-31"
+    "assignedPatientId": "user-31",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-52",
@@ -621,7 +723,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-32"
+    "assignedPatientId": "user-32",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-53",
@@ -633,7 +737,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-33"
+    "assignedPatientId": "user-33",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-54",
@@ -645,7 +751,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-34"
+    "assignedPatientId": "user-34",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-55",
@@ -657,7 +765,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-35"
+    "assignedPatientId": "user-35",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-56",
@@ -669,7 +779,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-36"
+    "assignedPatientId": "user-36",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-57",
@@ -681,7 +793,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-37"
+    "assignedPatientId": "user-37",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-58",
@@ -693,7 +807,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-38"
+    "assignedPatientId": "user-38",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-59",
@@ -705,7 +821,9 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-39"
+    "assignedPatientId": "user-39",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
   },
   {
     "id": "user-60",
@@ -717,6 +835,60 @@
     "capId": null,
     "dosingRegimen": null,
     "assignedChwId": null,
-    "assignedPatientId": "user-40"
+    "assignedPatientId": "user-40",
+    "passwordHash": "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
+    "firstLoginComplete": false
+  },
+  {
+    "id": "test-patient-1",
+    "firstName": "Test",
+    "lastName": "Patient",
+    "email": "patient@test.com",
+    "role": "patient",
+    "cohortId": "cohort-1",
+    "capId": null,
+    "dosingRegimen": null,
+    "assignedChwId": "test-chw-1",
+    "assignedPatientId": null,
+    "firstLoginComplete": true
+  },
+  {
+    "id": "test-chw-1",
+    "firstName": "Test",
+    "lastName": "CHW",
+    "email": "chw@test.com",
+    "role": "chw",
+    "cohortId": "cohort-1",
+    "capId": null,
+    "dosingRegimen": null,
+    "assignedChwId": null,
+    "assignedPatientId": "test-patient-1",
+    "firstLoginComplete": true
+  },
+  {
+    "id": "test-patient-2",
+    "firstName": "Alex",
+    "lastName": "Rivera",
+    "email": "alex.rivera@test.com",
+    "role": "patient",
+    "cohortId": "cohort-1",
+    "capId": null,
+    "dosingRegimen": "2x",
+    "assignedChwId": "test-chw-2",
+    "assignedPatientId": null,
+    "firstLoginComplete": true
+  },
+  {
+    "id": "test-chw-2",
+    "firstName": "Jordan",
+    "lastName": "Lee",
+    "email": "jordan.lee@test.com",
+    "role": "chw",
+    "cohortId": "cohort-1",
+    "capId": null,
+    "dosingRegimen": null,
+    "assignedChwId": null,
+    "assignedPatientId": "test-patient-2",
+    "firstLoginComplete": true
   }
 ]

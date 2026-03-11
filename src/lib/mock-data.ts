@@ -20,6 +20,7 @@ export const mockCohorts: Cohort[] = [
     capRangeEnd: 91,
     participantCount: 91,
     questionIds: ["q-1", "q-2", "q-3"],
+    emails: [],
   },
   {
     id: "cohort-2",
@@ -33,6 +34,7 @@ export const mockCohorts: Cohort[] = [
     capRangeEnd: 200,
     participantCount: 0,
     questionIds: ["q-1", "q-4", "q-5"],
+    emails: [],
   },
   {
     id: "cohort-3",
@@ -46,6 +48,7 @@ export const mockCohorts: Cohort[] = [
     capRangeEnd: 300,
     participantCount: 0,
     questionIds: ["q-1", "q-2"],
+    emails: [],
   },
 ];
 
@@ -100,12 +103,14 @@ export const mockUsers: User[] = Array.from({ length: 60 }, (_, i) => {
     firstName: firstNames[i % firstNames.length],
     lastName: lastNames[i % lastNames.length],
     email: `${firstNames[i % firstNames.length].toLowerCase()}.${lastNames[i % lastNames.length].toLowerCase()}@example.com`,
+    passwordHash: "bdbb487b139cfeea533e166183eb723db7d2dacd54f0deca3428fc96518e833e",
     role: isChw ? "chw" : "patient",
     cohortId: "cohort-1",
     capId: isChw ? null : i + 1,
     dosingRegimen: isChw ? null : dosingOptions[i % 3],
     assignedChwId: isPatientWithChw ? `user-${i + 21}` : null,
     assignedPatientId: isChw ? `user-${i - 19}` : null,
+    firstLoginComplete: false,
   };
 });
 
@@ -185,8 +190,11 @@ export const mockAdherenceRecords: AdherenceRecord[] = (() => {
       const repHour = 8 + Math.floor(rand() * 14);
       const repMin = Math.floor(rand() * 60);
       records.push({
+        id: `ar-mock-${dateStr}-${userId}`,
         date: dateStr,
         userId: `user-${userId}`,
+        recordedBy: `user-${userId}`,
+        recordType: "self",
         selfReported,
         capOpened,
         capTimestamp: capOpened

@@ -10,6 +10,7 @@ export interface AuthPayload {
   firstName: string;
   lastName: string;
   role: string;
+  firstLoginComplete: boolean;
   /** Unix timestamp (ms) when the token expires */
   exp: number;
 }

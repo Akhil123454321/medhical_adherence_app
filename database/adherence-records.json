@@ -1598,5 +1598,82 @@
     "capOpened": false,
     "capTimestamp": null,
     "reportTimestamp": "2025-04-04T20:31:00Z"
+  },
+  {
+    "id": "ar-1773206187885-wgm0g",
+    "date": "2026-03-11",
+    "userId": "test-patient-1",
+    "recordedBy": "test-patient-1",
+    "recordType": "self",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:16:27.878Z"
+  },
+  {
+    "id": "ar-1773206191691-fbqp7",
+    "date": "2026-03-11",
+    "userId": "test-patient-1",
+    "recordedBy": "test-patient-1",
+    "recordType": "self",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:16:31.669Z"
+  },
+  {
+    "id": "ar-1773206193324-jqy0m",
+    "date": "2026-03-11",
+    "userId": "test-patient-1",
+    "recordedBy": "test-patient-1",
+    "recordType": "self",
+    "selfReported": true,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:16:33.308Z"
+  },
+  {
+    "id": "ar-1773206210309-5fvex",
+    "date": "2026-03-11",
+    "userId": "test-patient-1",
+    "recordedBy": "test-chw-1",
+    "recordType": "chw_recorded",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:16:50.284Z"
+  },
+  {
+    "id": "ar-1773206211951-vf4r3",
+    "date": "2026-03-11",
+    "userId": "test-patient-1",
+    "recordedBy": "test-chw-1",
+    "recordType": "chw_notified",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:16:51.929Z"
+  },
+  {
+    "id": "ar-1773208176384-0ub58",
+    "date": "2026-03-11",
+    "userId": "test-patient-2",
+    "recordedBy": "test-chw-2",
+    "recordType": "chw_recorded",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:49:36.366Z"
+  },
+  {
+    "id": "ar-1773208177649-r4p4g",
+    "date": "2026-03-11",
+    "userId": "test-patient-2",
+    "recordedBy": "test-chw-2",
+    "recordType": "chw_notified",
+    "selfReported": false,
+    "capOpened": false,
+    "capTimestamp": null,
+    "reportTimestamp": "2026-03-11T05:49:37.634Z"
   }
 ]

@@ -1,22 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Modal from "@/components/ui/Modal";
 import CohortForm from "@/components/admin/CohortForm";
-import { mockCohorts } from "@/lib/mock-data";
 import { formatDate } from "@/lib/utils";
 import { Cohort } from "@/lib/types";
-import { Plus, Calendar, MapPin, Users } from "lucide-react";
+import { Plus, Calendar, MapPin, Users, Key } from "lucide-react";
+
+interface CreatedUser {
+  email: string;
+  role: string;
+}
 
 export default function CohortsPage() {
-  const [cohorts, setCohorts] = useState<Cohort[]>(mockCohorts);
+  const [cohorts, setCohorts] = useState<Cohort[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedCohort, setSelectedCohort] = useState<Cohort | null>(null);
+  const [createdUsers, setCreatedUsers] = useState<CreatedUser[]>([]);
+  const [showCredentials, setShowCredentials] = useState(false);
 
-  function handleCreate(data: {
+  useEffect(() => {
+    fetch("/api/cohorts")
+      .then((r) => r.json())
+      .then((data) => setCohorts(Array.isArray(data) ? data : []))
+      .catch(() => setCohorts([]));
+  }, []);
+
+  async function handleCreate(data: {
     name: string;
     institution: string;
     startDate: string;
@@ -24,16 +37,24 @@ export default function CohortsPage() {
     description: string;
     capRangeStart: number;
     capRangeEnd: number;
+    patientEmails: string[];
+    chwEmails: string[];
   }) {
-    const newCohort: Cohort = {
-      id: `cohort-${Date.now()}`,
-      ...data,
-      status: "upcoming",
-      participantCount: 0,
-      questionIds: [],
-    };
-    setCohorts([...cohorts, newCohort]);
-    setShowCreateModal(false);
+    const res = await fetch("/api/cohorts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      const { cohort, createdUsers: newUsers } = await res.json();
+      setCohorts((prev) => [...prev, cohort]);
+      setShowCreateModal(false);
+      if (newUsers && newUsers.length > 0) {
+        setCreatedUsers(newUsers);
+        setShowCredentials(true);
+      }
+    }
   }
 
   return (
@@ -87,6 +108,12 @@ export default function CohortsPage() {
                 <Users className="h-4 w-4" />
                 {cohort.participantCount} participants
               </div>
+              {cohort.emails && cohort.emails.length > 0 && (
+                <div className="flex items-center gap-2">
+                  <Key className="h-4 w-4" />
+                  {cohort.emails.length} email{cohort.emails.length !== 1 ? "s" : ""} enrolled
+                </div>
+              )}
             </div>
             <div className="mt-3 border-t border-gray-100 pt-3">
               <p className="text-xs text-gray-400">
@@ -97,6 +124,7 @@ export default function CohortsPage() {
         ))}
       </div>
 
+      {/* Create modal */}
       <Modal
         open={showCreateModal}
         onClose={() => setShowCreateModal(false)}
@@ -108,6 +136,45 @@ export default function CohortsPage() {
         />
       </Modal>
 
+      {/* Credentials modal (shown after cohort created with emails) */}
+      <Modal
+        open={showCredentials}
+        onClose={() => setShowCredentials(false)}
+        title="Cohort Created — Share Credentials"
+      >
+        <div className="space-y-4">
+          <p className="text-sm text-gray-600">
+            The following accounts were created. Share these credentials with participants.
+          </p>
+          <div className="rounded-lg border border-gray-200 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
+                  <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase">Role</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {createdUsers.map((u) => (
+                  <tr key={u.email}>
+                    <td className="px-4 py-2.5 font-mono text-xs text-gray-700">{u.email}</td>
+                    <td className="px-4 py-2.5 text-xs capitalize text-gray-700">{u.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-amber-600">
+            Users log in with their email address only — no password needed.
+            They will be prompted for survey questions on first login.
+          </p>
+          <div className="flex justify-end">
+            <Button onClick={() => setShowCredentials(false)}>Done</Button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Cohort detail modal */}
       <Modal
         open={!!selectedCohort}
         onClose={() => setSelectedCohort(null)}
@@ -145,14 +212,20 @@ export default function CohortsPage() {
                 </p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">
-                  Participants
-                </p>
-                <p className="text-gray-900">
-                  {selectedCohort.participantCount}
-                </p>
+                <p className="text-sm font-medium text-gray-500">Participants</p>
+                <p className="text-gray-900">{selectedCohort.participantCount}</p>
               </div>
             </div>
+            {selectedCohort.emails && selectedCohort.emails.length > 0 && (
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">Enrolled Emails</p>
+                <div className="max-h-32 overflow-y-auto space-y-1">
+                  {selectedCohort.emails.map((email) => (
+                    <p key={email} className="text-sm font-mono text-gray-700">{email}</p>
+                  ))}
+                </div>
+              </div>
+            )}
             <div>
               <p className="text-sm font-medium text-gray-500">Status</p>
               <Badge

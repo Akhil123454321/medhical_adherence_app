@@ -12,7 +12,8 @@ type Collection =
   | "users"
   | "questions"
   | "adherence-records"
-  | "activity-log";
+  | "activity-log"
+  | "survey-responses";
 
 export function readDB<T = unknown>(collection: Collection): T[] {
   const filePath = path.join(

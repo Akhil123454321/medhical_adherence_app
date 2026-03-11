@@ -12,6 +12,7 @@ export interface Cohort {
   capRangeEnd: number;
   participantCount: number;
   questionIds: string[];
+  emails: string[];
 }
 
 export type CapStatus = "available" | "assigned" | "broken";
@@ -33,12 +34,14 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  passwordHash?: string;
   role: UserRole;
   cohortId: string | null;
   capId: number | null;
   dosingRegimen: DosingRegimen | null;
   assignedChwId: string | null;
   assignedPatientId: string | null;
+  firstLoginComplete: boolean;
 }
 
 export interface Question {
@@ -51,12 +54,24 @@ export interface Question {
 }
 
 export interface AdherenceRecord {
+  id: string;
   date: string;
   userId: string;
+  recordedBy: string;
+  recordType: "self" | "chw_recorded" | "chw_notified";
   selfReported: boolean;
   capOpened: boolean;
   capTimestamp: string | null;
   reportTimestamp: string | null;
+}
+
+export interface SurveyResponse {
+  id: string;
+  userId: string;
+  cohortId: string;
+  surveyType: "pre" | "post";
+  answers: Record<string, string | number | boolean | string[]>;
+  submittedAt: string;
 }
 
 export interface ActivityItem {

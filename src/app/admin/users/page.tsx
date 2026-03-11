@@ -32,6 +32,8 @@ export default function UsersPage() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const [resetSuccess, setResetSuccess] = useState(false);
 
   useEffect(() => {
     fetch("/api/users")
@@ -73,6 +75,7 @@ export default function UsersPage() {
     setEditPatientId(user.assignedPatientId ?? "");
     setSaveError("");
     setSaveSuccess(false);
+    setResetSuccess(false);
   }
 
   function closeModal() {
@@ -322,6 +325,48 @@ export default function UsersPage() {
                 )}
               </div>
             </div>
+
+            {/* Reset Onboarding */}
+            {selectedUser.role !== "admin" && (
+              <div className="rounded-lg border border-red-100 bg-red-50 p-3">
+                <p className="mb-1.5 text-xs font-semibold text-red-700">
+                  Reset Onboarding
+                </p>
+                <p className="mb-2 text-xs text-red-600">
+                  Sets firstLoginComplete to false and deletes their survey responses. They will be sent through onboarding again on next login.
+                </p>
+                {resetSuccess && (
+                  <p className="mb-2 text-xs text-green-700 font-medium">
+                    ✓ Onboarding reset. User will re-complete onboarding on next login.
+                  </p>
+                )}
+                <button
+                  onClick={async () => {
+                    if (!selectedUser) return;
+                    setResetting(true);
+                    setResetSuccess(false);
+                    try {
+                      const res = await fetch(`/api/admin/reset-onboarding/${selectedUser.id}`, { method: "POST" });
+                      if (res.ok) {
+                        setUsers((prev) =>
+                          prev.map((u) =>
+                            u.id === selectedUser.id ? { ...u, firstLoginComplete: false } : u
+                          )
+                        );
+                        setSelectedUser((u) => u ? { ...u, firstLoginComplete: false } : u);
+                        setResetSuccess(true);
+                      }
+                    } finally {
+                      setResetting(false);
+                    }
+                  }}
+                  disabled={resetting}
+                  className="rounded-md border border-red-300 bg-white px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-100 disabled:opacity-60 transition-colors"
+                >
+                  {resetting ? "Resetting…" : "Reset Onboarding"}
+                </button>
+              </div>
+            )}
 
             {saveSuccess && (
               <div className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">

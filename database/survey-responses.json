@@ -1,0 +1,135 @@
+[
+  {
+    "id": "sr-1773208012365",
+    "userId": "test-patient-2",
+    "cohortId": "cohort-1",
+    "surveyType": "pre",
+    "answers": {
+      "uniqueIdentifier": "ASDFASDF",
+      "medicationAdherenceChoice": "Strongly disagree",
+      "difficultyRating": "Very difficult",
+      "chwImprovesAdherence": "Strongly disagree",
+      "chwWorthwhile": "Disagree",
+      "advocateLikelihood": "Very unlikely",
+      "anticipatedAdherence": "<60%",
+      "gender": "Male",
+      "age": "21-25",
+      "relationshipStatus": "Single",
+      "dependents": "None",
+      "gpa": "",
+      "dailyMedications": "No",
+      "helpedLovedOne": "No",
+      "stressors": [
+        "Staying away from home (i.e. in a hotel or temporary housing)"
+      ]
+    },
+    "submittedAt": "2026-03-11T05:46:52.365Z"
+  },
+  {
+    "id": "sr-1773208074199",
+    "userId": "test-patient-2",
+    "cohortId": "cohort-1",
+    "surveyType": "post",
+    "answers": {
+      "uniqueIdentifier": "WFWERQWERQWER",
+      "assignedRole": "BID Patient with an assigned community health worker",
+      "difficultyRating": "Very difficult",
+      "chwImprovesAdherence": "Disagree",
+      "chwWorthwhile": "Strongly disagree",
+      "advocateLikelihood": "Very unlikely",
+      "empathyChange": "Decreased significantly",
+      "educationalValue": 4,
+      "beneficialAspects": "",
+      "difficultAspects": "",
+      "otherComments": "",
+      "missedMoreThanExpected": "Yes",
+      "percentageTaken": "<25%",
+      "barriers": [
+        "Busy schedule"
+      ],
+      "strategiesUsed": [
+        "Setting a reminder"
+      ],
+      "strategiesOther": "",
+      "chwHelpedRemember": "Strongly disagree",
+      "betterUnderstandingCHW_patient": "Strongly disagree",
+      "pillBottleRating": 3,
+      "pillBottleFeedback": "",
+      "betterUnderstandingCHW_noChw": "",
+      "pillBottleRating_noChw": null,
+      "pillBottleFeedback_noChw": "",
+      "chwBarriers": [],
+      "chwBarriersOther": "",
+      "chwStrategies": [],
+      "betterUnderstandingCHW_chw": ""
+    },
+    "submittedAt": "2026-03-11T05:47:54.199Z"
+  },
+  {
+    "id": "sr-1773208153534",
+    "userId": "test-chw-2",
+    "cohortId": "cohort-1",
+    "surveyType": "pre",
+    "answers": {
+      "uniqueIdentifier": "ASDFASDFASD",
+      "medicationAdherenceChoice": "Disagree",
+      "difficultyRating": "Very difficult",
+      "chwImprovesAdherence": "Neither agree nor disagree",
+      "chwWorthwhile": "Disagree",
+      "advocateLikelihood": "Slightly unlikely",
+      "anticipatedAdherence": "",
+      "gender": "Male",
+      "age": "31-35",
+      "relationshipStatus": "Married",
+      "dependents": "2",
+      "gpa": "",
+      "dailyMedications": "Yes, 1-2 medicines per day",
+      "helpedLovedOne": "Yes, short-term medications",
+      "stressors": [
+        "Moving",
+        "Housing instability"
+      ]
+    },
+    "submittedAt": "2026-03-11T05:49:13.534Z"
+  },
+  {
+    "id": "sr-1773208173378",
+    "userId": "test-chw-2",
+    "cohortId": "cohort-1",
+    "surveyType": "post",
+    "answers": {
+      "uniqueIdentifier": "EARFAERDFSDF",
+      "assignedRole": "BID Patient with an assigned community health worker",
+      "difficultyRating": "Neither difficult nor easy",
+      "chwImprovesAdherence": "Neither agree nor disagree",
+      "chwWorthwhile": "Agree",
+      "advocateLikelihood": "Neutral",
+      "empathyChange": "Decreased slightly",
+      "educationalValue": 4,
+      "beneficialAspects": "asdf",
+      "difficultAspects": "asdf",
+      "otherComments": "asdf",
+      "missedMoreThanExpected": "Yes",
+      "percentageTaken": "75-100%",
+      "barriers": [
+        "Medication frequency"
+      ],
+      "strategiesUsed": [
+        "Leaving a note out"
+      ],
+      "strategiesOther": "",
+      "chwHelpedRemember": "Neither agree nor disagree",
+      "betterUnderstandingCHW_patient": "Strongly disagree",
+      "pillBottleRating": 4,
+      "pillBottleFeedback": "",
+      "betterUnderstandingCHW_noChw": "",
+      "pillBottleRating_noChw": null,
+      "pillBottleFeedback_noChw": "",
+      "chwBarriers": [],
+      "chwBarriersOther": "",
+      "chwStrategies": [],
+      "betterUnderstandingCHW_chw": ""
+    },
+    "submittedAt": "2026-03-11T05:49:33.378Z"
+  }
+]
