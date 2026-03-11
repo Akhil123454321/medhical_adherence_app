@@ -15,7 +15,16 @@ export async function GET(request: NextRequest) {
   const cohorts = readDB<Cohort>("cohorts");
   const cohort = user.cohortId ? cohorts.find((c) => c.id === user.cohortId) : null;
 
-  // If CHW, resolve assigned patient's dosing regimen
+  // Resolve CHW name for patients
+  let assignedChw: { id: string; firstName: string; lastName: string } | null = null;
+  if (user.role === "patient" && user.assignedChwId) {
+    const chw = users.find((u) => u.id === user.assignedChwId);
+    if (chw) {
+      assignedChw = { id: chw.id, firstName: chw.firstName, lastName: chw.lastName };
+    }
+  }
+
+  // Resolve assigned patient details for CHWs
   let assignedPatient: {
     id: string;
     firstName: string;
@@ -42,6 +51,7 @@ export async function GET(request: NextRequest) {
     email: user.email,
     role: user.role,
     cohortId: user.cohortId,
+    capId: user.capId,
     dosingRegimen: user.dosingRegimen,
     assignedChwId: user.assignedChwId,
     assignedPatientId: user.assignedPatientId,
@@ -51,9 +61,11 @@ export async function GET(request: NextRequest) {
           id: cohort.id,
           name: cohort.name,
           institution: cohort.institution,
+          startDate: cohort.startDate,
           endDate: cohort.endDate,
         }
       : null,
+    assignedChw,
     assignedPatient,
   });
 }

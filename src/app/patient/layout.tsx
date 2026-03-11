@@ -19,7 +19,7 @@ export default async function PatientLayout({
   return (
     <div className="min-h-screen bg-gray-50">
       <PatientNav userName={`${payload.firstName} ${payload.lastName}`} />
-      <main className="mx-auto max-w-lg px-4 py-8">{children}</main>
+      <main className="mx-auto max-w-4xl px-6 py-8">{children}</main>
     </div>
   );
 }

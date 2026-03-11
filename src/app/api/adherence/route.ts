@@ -9,16 +9,33 @@ export async function GET(request: NextRequest) {
   if (!payload) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
-  const userId = searchParams.get("userId") || payload.id;
+  const userId = searchParams.get("userId");
+  const cohortId = searchParams.get("cohortId");
 
-  // CHWs can query their patients; patients can only query themselves
-  if (payload.role === "patient" && userId !== payload.id) {
+  const records = readDB<AdherenceRecord>("adherence-records");
+
+  // Admin: can query all records, optionally filtered by cohort
+  if (payload.role === "admin") {
+    if (cohortId) {
+      const users = readDB<User>("users");
+      const cohortUserIds = new Set(
+        users.filter((u) => u.cohortId === cohortId).map((u) => u.id)
+      );
+      return NextResponse.json(records.filter((r) => cohortUserIds.has(r.userId)));
+    }
+    if (userId) {
+      return NextResponse.json(records.filter((r) => r.userId === userId));
+    }
+    return NextResponse.json(records);
+  }
+
+  // Patients can only query themselves
+  const targetId = userId || payload.id;
+  if (payload.role === "patient" && targetId !== payload.id) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  const records = readDB<AdherenceRecord>("adherence-records");
-  const userRecords = records.filter((r) => r.userId === userId);
-  return NextResponse.json(userRecords);
+  return NextResponse.json(records.filter((r) => r.userId === targetId));
 }
 
 export async function POST(request: NextRequest) {

@@ -10,9 +10,10 @@ const ROLE_HOME: Record<string, string> = {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Let auth API calls and static assets through unconditionally
+  // Let auth API calls, set-password page, and static assets through unconditionally
   if (
     pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/auth/") ||
     pathname.startsWith("/_next") ||
     pathname === "/favicon.ico"
   ) {

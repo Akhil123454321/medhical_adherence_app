@@ -863,7 +863,8 @@
     "dosingRegimen": null,
     "assignedChwId": null,
     "assignedPatientId": "test-patient-1",
-    "firstLoginComplete": true
+    "firstLoginComplete": true,
+    "passwordHash": "937e8d5fbb48bd4949536cd65b8d35c426b80d2f830c5c308e2cdec422ae2244"
   },
   {
     "id": "test-patient-2",
@@ -876,7 +877,8 @@
     "dosingRegimen": "2x",
     "assignedChwId": "test-chw-2",
     "assignedPatientId": null,
-    "firstLoginComplete": true
+    "firstLoginComplete": true,
+    "passwordHash": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
   },
   {
     "id": "test-chw-2",

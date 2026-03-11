@@ -88,3 +88,10 @@ export interface RandomizationResult {
   dosingRegimen: DosingRegimen | null;
   pairedWith: string | null;
 }
+
+export interface VerificationToken {
+  id: string;
+  userId: string;
+  token: string;
+  expiresAt: string;
+}

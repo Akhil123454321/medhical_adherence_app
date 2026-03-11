@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     return response;
   }
 
-  // Patients and CHWs — email only, no password
+  // Patients and CHWs
   const users = readDB<User>("users");
   const user = users.find(
     (u) => u.email.toLowerCase() === email.toLowerCase()
@@ -70,6 +70,20 @@ export async function POST(request: NextRequest) {
 
   if (!user) {
     return NextResponse.json({ error: "No account found for that email" }, { status: 401 });
+  }
+
+  // User hasn't set a password yet → trigger verification flow
+  if (!user.passwordHash) {
+    return NextResponse.json({ needsVerification: true });
+  }
+
+  // User has a password → require and validate it
+  if (!password) {
+    return NextResponse.json({ error: "Password is required" }, { status: 400 });
+  }
+  const userHash = createHash("sha256").update(password).digest("hex");
+  if (userHash !== user.passwordHash) {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
   const payload: AuthPayload = {

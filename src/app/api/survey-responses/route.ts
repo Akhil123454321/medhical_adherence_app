@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDB, writeDB } from "@/lib/db";
 import { verifyToken, createToken, AUTH_COOKIE, TOKEN_TTL_MS } from "@/lib/auth";
-import { SurveyResponse, User } from "@/lib/types";
+import { Cohort, SurveyResponse, User } from "@/lib/types";
 
 export async function GET(request: NextRequest) {
   const token = request.cookies.get(AUTH_COOKIE)?.value;
@@ -46,6 +46,25 @@ export async function POST(request: NextRequest) {
   }
 
   const user = users[userIndex];
+
+  // Post-survey: only allowed on or after the cohort end date
+  if (surveyType === "post") {
+    if (!user.cohortId) {
+      return NextResponse.json({ error: "No cohort assigned" }, { status: 403 });
+    }
+    const cohorts = readDB<Cohort>("cohorts");
+    const cohort = cohorts.find((c) => c.id === user.cohortId);
+    if (!cohort) {
+      return NextResponse.json({ error: "Cohort not found" }, { status: 403 });
+    }
+    const today = new Date().toISOString().split("T")[0];
+    if (today < cohort.endDate) {
+      return NextResponse.json(
+        { error: "Post-exercise survey is not available until the cohort ends" },
+        { status: 403 }
+      );
+    }
+  }
 
   const responses = readDB<SurveyResponse>("survey-responses");
   const newResponse: SurveyResponse = {

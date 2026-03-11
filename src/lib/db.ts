@@ -13,7 +13,8 @@ type Collection =
   | "questions"
   | "adherence-records"
   | "activity-log"
-  | "survey-responses";
+  | "survey-responses"
+  | "verification-tokens";
 
 export function readDB<T = unknown>(collection: Collection): T[] {
   const filePath = path.join(

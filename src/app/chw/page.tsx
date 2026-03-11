@@ -248,7 +248,7 @@ export default function ChwPage() {
           <p className="text-gray-500">No patients assigned to you yet.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {patients.map((patient) => {
             const hasTaken = patient.todayRecords.some(
               (r) =>
@@ -350,9 +350,12 @@ export default function ChwPage() {
                       {patient.todayRecords.map((r) => (
                         <div
                           key={r.id}
-                          className="flex items-center justify-between text-xs text-gray-600"
+                          className="flex items-center justify-between text-xs"
                         >
-                          <span className="capitalize">
+                          <span className={`flex items-center gap-1 ${r.recordType === "chw_notified" ? "text-blue-600" : "text-gray-600"}`}>
+                            {r.recordType === "chw_notified"
+                              ? <Bell className="h-3 w-3" />
+                              : <CheckCircle className="h-3 w-3 text-green-500" />}
                             {r.recordType === "self"
                               ? "Self-reported"
                               : r.recordType === "chw_recorded"

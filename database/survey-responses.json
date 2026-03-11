@@ -1,71 +1,5 @@
 [
   {
-    "id": "sr-1773208012365",
-    "userId": "test-patient-2",
-    "cohortId": "cohort-1",
-    "surveyType": "pre",
-    "answers": {
-      "uniqueIdentifier": "ASDFASDF",
-      "medicationAdherenceChoice": "Strongly disagree",
-      "difficultyRating": "Very difficult",
-      "chwImprovesAdherence": "Strongly disagree",
-      "chwWorthwhile": "Disagree",
-      "advocateLikelihood": "Very unlikely",
-      "anticipatedAdherence": "<60%",
-      "gender": "Male",
-      "age": "21-25",
-      "relationshipStatus": "Single",
-      "dependents": "None",
-      "gpa": "",
-      "dailyMedications": "No",
-      "helpedLovedOne": "No",
-      "stressors": [
-        "Staying away from home (i.e. in a hotel or temporary housing)"
-      ]
-    },
-    "submittedAt": "2026-03-11T05:46:52.365Z"
-  },
-  {
-    "id": "sr-1773208074199",
-    "userId": "test-patient-2",
-    "cohortId": "cohort-1",
-    "surveyType": "post",
-    "answers": {
-      "uniqueIdentifier": "WFWERQWERQWER",
-      "assignedRole": "BID Patient with an assigned community health worker",
-      "difficultyRating": "Very difficult",
-      "chwImprovesAdherence": "Disagree",
-      "chwWorthwhile": "Strongly disagree",
-      "advocateLikelihood": "Very unlikely",
-      "empathyChange": "Decreased significantly",
-      "educationalValue": 4,
-      "beneficialAspects": "",
-      "difficultAspects": "",
-      "otherComments": "",
-      "missedMoreThanExpected": "Yes",
-      "percentageTaken": "<25%",
-      "barriers": [
-        "Busy schedule"
-      ],
-      "strategiesUsed": [
-        "Setting a reminder"
-      ],
-      "strategiesOther": "",
-      "chwHelpedRemember": "Strongly disagree",
-      "betterUnderstandingCHW_patient": "Strongly disagree",
-      "pillBottleRating": 3,
-      "pillBottleFeedback": "",
-      "betterUnderstandingCHW_noChw": "",
-      "pillBottleRating_noChw": null,
-      "pillBottleFeedback_noChw": "",
-      "chwBarriers": [],
-      "chwBarriersOther": "",
-      "chwStrategies": [],
-      "betterUnderstandingCHW_chw": ""
-    },
-    "submittedAt": "2026-03-11T05:47:54.199Z"
-  },
-  {
     "id": "sr-1773208153534",
     "userId": "test-chw-2",
     "cohortId": "cohort-1",
@@ -131,5 +65,32 @@
       "betterUnderstandingCHW_chw": ""
     },
     "submittedAt": "2026-03-11T05:49:33.378Z"
+  },
+  {
+    "id": "sr-1773260218630",
+    "userId": "test-patient-2",
+    "cohortId": "cohort-1",
+    "surveyType": "pre",
+    "answers": {
+      "uniqueIdentifier": "ASDFASDFSAD",
+      "medicationAdherenceChoice": "Disagree",
+      "difficultyRating": "Slightly difficult",
+      "chwImprovesAdherence": "Agree",
+      "chwWorthwhile": "Disagree",
+      "advocateLikelihood": "Slightly unlikely",
+      "anticipatedAdherence": "60-70%",
+      "gender": "Male",
+      "age": "35-40",
+      "relationshipStatus": "Married",
+      "dependents": "3",
+      "gpa": "",
+      "dailyMedications": "Yes, 1-2 medicines per day",
+      "helpedLovedOne": "Yes, short-term medications",
+      "stressors": [
+        "Moving",
+        "Mental health disorder (anxiety, depression, ADHD)"
+      ]
+    },
+    "submittedAt": "2026-03-11T20:16:58.630Z"
   }
 ]
