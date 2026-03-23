@@ -8,7 +8,7 @@ import StatsCard from "@/components/ui/StatsCard";
 import Button from "@/components/ui/Button";
 import AdherenceChart from "@/components/admin/AdherenceChart";
 import { AdherenceRecord, Cohort, User } from "@/lib/types";
-import { TrendingUp, TrendingDown, BarChart3, Activity, CheckCircle, Bell, User as UserIcon } from "lucide-react";
+import { Activity, CheckCircle, Bell, User as UserIcon, Download } from "lucide-react";
 
 export default function DataPage() {
   const [cohorts, setCohorts] = useState<Cohort[]>([]);
@@ -17,6 +17,7 @@ export default function DataPage() {
   const [selectedCohort, setSelectedCohort] = useState("");
   const [chartType, setChartType] = useState<"bar" | "line">("bar");
   const [loading, setLoading] = useState(true);
+  const [exporting, setExporting] = useState(false);
 
   // Load cohorts and users once
   useEffect(() => {
@@ -99,6 +100,25 @@ export default function DataPage() {
 
   const totalRecords = overallStats.self + overallStats.chwRecorded + overallStats.chwNotified;
 
+  async function downloadCSV() {
+    if (!selectedCohort) return;
+    setExporting(true);
+    try {
+      const res = await fetch(`/api/export?cohortId=${selectedCohort}`);
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = res.headers.get("Content-Disposition")?.match(/filename="(.+)"/)?.[1]
+        ?? "export.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    } finally {
+      setExporting(false);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -108,12 +128,22 @@ export default function DataPage() {
             Adherence breakdown by record type across the cohort
           </p>
         </div>
-        <Select
-          value={selectedCohort}
-          onChange={(e) => setSelectedCohort(e.target.value)}
-          options={cohorts.map((c) => ({ value: c.id, label: c.name }))}
-          className="w-56"
-        />
+        <div className="flex items-center gap-3">
+          <Select
+            value={selectedCohort}
+            onChange={(e) => setSelectedCohort(e.target.value)}
+            options={cohorts.map((c) => ({ value: c.id, label: c.name }))}
+            className="w-56"
+          />
+          <button
+            onClick={downloadCSV}
+            disabled={!selectedCohort || exporting}
+            className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-50 transition-colors"
+          >
+            <Download className="h-4 w-4" />
+            {exporting ? "Exporting…" : "Export CSV"}
+          </button>
+        </div>
       </div>
 
       {/* Stats row */}

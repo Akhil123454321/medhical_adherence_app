@@ -17,6 +17,17 @@ import {
 } from "lucide-react";
 import { AdherenceRecord } from "@/lib/types";
 
+function contactMethodLabel(method: string) {
+  const map: Record<string, string> = {
+    text: "Text",
+    email: "Email",
+    phone: "Phone call",
+    in_person: "In person",
+    other: "Other",
+  };
+  return map[method] ?? method;
+}
+
 function formatDateTime(iso: string) {
   return new Date(iso).toLocaleString("en-US", {
     month: "short",
@@ -375,12 +386,13 @@ export default function PatientPage() {
                         : r.date}
                     </span>
                   </div>
-                  <span className={`text-xs capitalize ${r.recordType === "chw_notified" ? "text-blue-500" : "text-gray-400"}`}>
+                  <span className={`text-xs ${r.recordType === "chw_notified" ? "text-blue-500" : "text-gray-400"}`}>
                     {r.recordType === "self"
                       ? "Self"
                       : r.recordType === "chw_recorded"
                         ? "Recorded by CHW"
                         : "CHW notified"}
+                    {r.contactMethod && ` · ${contactMethodLabel(r.contactMethod)}`}
                   </span>
                 </div>
               ))}

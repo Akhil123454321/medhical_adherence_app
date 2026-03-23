@@ -4,8 +4,8 @@ const apiKey = process.env.SENDGRID_API_KEY;
 if (apiKey) sgMail.setApiKey(apiKey);
 
 export async function sendVerificationEmail(to: string, verificationUrl: string): Promise<void> {
-  const fromEmail = process.env.SENDGRID_FROM_EMAIL;
-  if (!apiKey || !fromEmail) {
+  const fromEmail = process.env.SENDGRID_FROM_EMAIL ?? "medhadherehelp@gmail.com";
+  if (!apiKey) {
     // In development without SendGrid configured, log the link instead
     console.log(`[DEV] Verification email to ${to}: ${verificationUrl}`);
     return;

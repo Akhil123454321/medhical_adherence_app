@@ -2,7 +2,7 @@
 // Only usable in Node.js runtime (API routes, server components).
 // Not safe for Edge runtime — use auth.ts utilities there instead.
 
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import path from "path";
 
 type Collection =
@@ -33,6 +33,12 @@ export function writeDB<T = unknown>(collection: Collection, data: T[]): void {
     `${collection}.json`
   );
   writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+}
+
+export function writeCapLog(capId: number, content: string): void {
+  const dir = path.join(process.cwd(), "database", "cap-logs");
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(path.join(dir, `cap-${capId}.csv`), content, "utf-8");
 }
 
 export function readCapLog(capId: number): string | null {

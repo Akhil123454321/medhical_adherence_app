@@ -5,6 +5,17 @@ import Link from "next/link";
 import { CheckCircle, Bell, AlertCircle, User, ClipboardCheck, Clock } from "lucide-react";
 import { AdherenceRecord, User as UserType } from "@/lib/types";
 
+function contactMethodLabel(method: string) {
+  const map: Record<string, string> = {
+    text: "Text",
+    email: "Email",
+    phone: "Phone call",
+    in_person: "In person",
+    other: "Other",
+  };
+  return map[method] ?? method;
+}
+
 function formatDateTime(iso: string) {
   return new Date(iso).toLocaleString("en-US", {
     month: "short",
@@ -25,6 +36,19 @@ export default function ChwPage() {
   const [actionState, setActionState] = useState<
     Record<string, { loading: boolean; success: string; error: string }>
   >({});
+  const [pendingAction, setPendingAction] = useState<{
+    patientId: string;
+    recordType: "chw_recorded" | "chw_notified";
+    contactMethod: string;
+  } | null>(null);
+
+  const CONTACT_METHODS = [
+    { value: "text", label: "Text" },
+    { value: "email", label: "Email" },
+    { value: "phone", label: "Phone call" },
+    { value: "in_person", label: "In person" },
+    { value: "other", label: "Other" },
+  ];
   const [postSurveyStatus, setPostSurveyStatus] = useState<
     "unavailable" | "available" | "completed"
   >("available");
@@ -95,8 +119,10 @@ export default function ChwPage() {
 
   async function recordAction(
     patientId: string,
-    recordType: "chw_recorded" | "chw_notified"
+    recordType: "chw_recorded" | "chw_notified",
+    contactMethod: string
   ) {
+    setPendingAction(null);
     setActionState((s) => ({
       ...s,
       [`${patientId}-${recordType}`]: { loading: true, success: "", error: "" },
@@ -109,6 +135,7 @@ export default function ChwPage() {
         body: JSON.stringify({
           userId: patientId,
           recordType,
+          contactMethod,
           takenAt: new Date().toISOString(),
         }),
       });
@@ -288,57 +315,91 @@ export default function ChwPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Record taken */}
-                  <div>
-                    <button
-                      onClick={() => recordAction(patient.id, "chw_recorded")}
-                      disabled={recordState.loading}
-                      className="w-full rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-60 transition-colors"
-                    >
-                      {recordState.loading
-                        ? "Recording…"
-                        : "Record taken"}
-                    </button>
-                    {recordState.success && (
-                      <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
-                        <CheckCircle className="h-3 w-3" />
-                        {recordState.success}
-                      </p>
-                    )}
-                    {recordState.error && (
-                      <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
-                        <AlertCircle className="h-3 w-3" />
-                        {recordState.error}
-                      </p>
-                    )}
+                {/* Inline contact method selector */}
+                {pendingAction?.patientId === patient.id ? (
+                  <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 space-y-2">
+                    <p className="text-xs font-medium text-gray-600">
+                      How did you contact {patient.firstName}?
+                    </p>
+                    <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-5">
+                      {CONTACT_METHODS.map((m) => (
+                        <button
+                          key={m.value}
+                          type="button"
+                          onClick={() => setPendingAction((p) => p ? { ...p, contactMethod: m.value } : p)}
+                          className={`rounded-lg border px-2 py-2 text-xs font-medium transition-colors ${
+                            pendingAction.contactMethod === m.value
+                              ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                              : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                          }`}
+                        >
+                          {m.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => recordAction(patient.id, pendingAction.recordType, pendingAction.contactMethod)}
+                        disabled={!pendingAction.contactMethod}
+                        className="rounded-lg bg-indigo-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700 disabled:opacity-40"
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPendingAction(null)}
+                        className="rounded-lg border border-gray-200 px-4 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* Record taken */}
+                    <div>
+                      <button
+                        onClick={() => setPendingAction({ patientId: patient.id, recordType: "chw_recorded", contactMethod: "" })}
+                        disabled={recordState.loading}
+                        className="w-full rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-60 transition-colors"
+                      >
+                        {recordState.loading ? "Recording…" : "Record taken"}
+                      </button>
+                      {recordState.success && (
+                        <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
+                          <CheckCircle className="h-3 w-3" />{recordState.success}
+                        </p>
+                      )}
+                      {recordState.error && (
+                        <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
+                          <AlertCircle className="h-3 w-3" />{recordState.error}
+                        </p>
+                      )}
+                    </div>
 
-                  {/* Record notified */}
-                  <div>
-                    <button
-                      onClick={() => recordAction(patient.id, "chw_notified")}
-                      disabled={notifyState.loading}
-                      className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-60 transition-colors"
-                    >
-                      {notifyState.loading
-                        ? "Recording…"
-                        : "Notified patient"}
-                    </button>
-                    {notifyState.success && (
-                      <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
-                        <CheckCircle className="h-3 w-3" />
-                        {notifyState.success}
-                      </p>
-                    )}
-                    {notifyState.error && (
-                      <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
-                        <AlertCircle className="h-3 w-3" />
-                        {notifyState.error}
-                      </p>
-                    )}
+                    {/* Notified patient */}
+                    <div>
+                      <button
+                        onClick={() => setPendingAction({ patientId: patient.id, recordType: "chw_notified", contactMethod: "" })}
+                        disabled={notifyState.loading}
+                        className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-60 transition-colors"
+                      >
+                        {notifyState.loading ? "Recording…" : "Notified patient"}
+                      </button>
+                      {notifyState.success && (
+                        <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
+                          <CheckCircle className="h-3 w-3" />{notifyState.success}
+                        </p>
+                      )}
+                      {notifyState.error && (
+                        <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
+                          <AlertCircle className="h-3 w-3" />{notifyState.error}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Today's log */}
                 {patient.todayRecords.length > 0 && (
@@ -361,6 +422,9 @@ export default function ChwPage() {
                               : r.recordType === "chw_recorded"
                                 ? "Recorded by you"
                                 : "Notified by you"}
+                            {r.contactMethod && (
+                              <span className="text-gray-400">· {contactMethodLabel(r.contactMethod)}</span>
+                            )}
                           </span>
                           <span className="text-gray-400">
                             {r.reportTimestamp

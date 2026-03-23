@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
   const payload = token ? await verifyToken(token) : null;
   if (!payload) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  let body: { userId?: string; recordType?: string; takenAt?: string };
+  let body: { userId?: string; recordType?: string; takenAt?: string; contactMethod?: string };
   try {
     body = await request.json();
   } catch {
@@ -53,6 +53,7 @@ export async function POST(request: NextRequest) {
   const targetUserId = body.userId || payload.id;
   const recordType = body.recordType || "self";
   const takenAt = body.takenAt || new Date().toISOString();
+  const contactMethod = body.contactMethod;
 
   // Validate recordType
   if (!["self", "chw_recorded", "chw_notified"].includes(recordType)) {
@@ -80,6 +81,7 @@ export async function POST(request: NextRequest) {
     userId: targetUserId,
     recordedBy: payload.id,
     recordType: recordType as AdherenceRecord["recordType"],
+    contactMethod: contactMethod as AdherenceRecord["contactMethod"],
     selfReported: recordType === "self",
     capOpened: false,
     capTimestamp: null,

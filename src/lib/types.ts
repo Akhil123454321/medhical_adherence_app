@@ -53,12 +53,15 @@ export interface Question {
   cohortIds: string[];
 }
 
+export type ContactMethod = "text" | "email" | "phone" | "in_person" | "other";
+
 export interface AdherenceRecord {
   id: string;
   date: string;
   userId: string;
   recordedBy: string;
   recordType: "self" | "chw_recorded" | "chw_notified";
+  contactMethod?: ContactMethod;
   selfReported: boolean;
   capOpened: boolean;
   capTimestamp: string | null;
