@@ -11,6 +11,7 @@ export interface AuthPayload {
   lastName: string;
   role: string;
   firstLoginComplete: boolean;
+  superAdmin?: boolean;
   /** Unix timestamp (ms) when the token expires */
   exp: number;
 }

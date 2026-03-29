@@ -11,6 +11,7 @@ interface AdminRecord {
   email: string;
   passwordHash: string;
   role: string;
+  superAdmin?: boolean;
 }
 
 export async function POST(request: NextRequest) {
@@ -48,6 +49,7 @@ export async function POST(request: NextRequest) {
       lastName: admin.lastName,
       role: admin.role,
       firstLoginComplete: true,
+      superAdmin: admin.superAdmin ?? false,
       exp: Date.now() + TOKEN_TTL_MS,
     };
     const token = await createToken(payload);

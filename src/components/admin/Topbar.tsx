@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 
 interface TopbarProps {
   userName?: string;
+  superAdmin?: boolean;
   onMenuOpen?: () => void;
 }
 
-export default function Topbar({ userName = "Admin", onMenuOpen }: TopbarProps) {
+export default function Topbar({ userName = "Admin", superAdmin = false, onMenuOpen }: TopbarProps) {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -91,6 +92,11 @@ export default function Topbar({ userName = "Admin", onMenuOpen }: TopbarProps) 
           <div className="hidden items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 sm:flex">
             <User className="h-4 w-4 text-gray-400" />
             <span className="text-sm font-medium text-gray-700">{userName}</span>
+            {superAdmin && (
+              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-semibold text-indigo-700">
+                Super Admin
+              </span>
+            )}
           </div>
 
           <button

@@ -75,6 +75,7 @@ export default function UsersPage() {
   const [editRole, setEditRole] = useState<UserRole>("patient");
   const [editChwId, setEditChwId] = useState<string>("");
   const [editPatientId, setEditPatientId] = useState<string>("");
+  const [editDosing, setEditDosing] = useState<string>("");
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -177,6 +178,7 @@ export default function UsersPage() {
     setEditRole(user.role);
     setEditChwId(user.assignedChwId ?? "");
     setEditPatientId(user.assignedPatientId ?? "");
+    setEditDosing(user.dosingRegimen ?? "");
     setSaveError("");
     setSaveSuccess(false);
     setResetSuccess(false);
@@ -193,7 +195,10 @@ export default function UsersPage() {
     setSaving(true);
     setSaveError("");
 
-    const body: Record<string, unknown> = { role: editRole };
+    const body: Record<string, unknown> = {
+      role: editRole,
+      dosingRegimen: editDosing || null,
+    };
     if (editRole === "patient") {
       body.assignedChwId = editChwId || null;
       body.assignedPatientId = null;
@@ -232,7 +237,8 @@ export default function UsersPage() {
     selectedUser &&
     (editRole !== selectedUser.role ||
       (editChwId || null) !== selectedUser.assignedChwId ||
-      (editPatientId || null) !== selectedUser.assignedPatientId);
+      (editPatientId || null) !== selectedUser.assignedPatientId ||
+      (editDosing || null) !== selectedUser.dosingRegimen);
 
   return (
     <div className="space-y-6">
@@ -404,6 +410,18 @@ export default function UsersPage() {
                     { value: "patient", label: "Patient" },
                     { value: "chw", label: "CHW" },
                     { value: "admin", label: "Admin" },
+                  ]}
+                />
+
+                <Select
+                  label="Dosing Frequency"
+                  value={editDosing}
+                  onChange={(e) => setEditDosing(e.target.value)}
+                  options={[
+                    { value: "", label: "Not assigned" },
+                    { value: "1x", label: "1x daily" },
+                    { value: "2x", label: "2x daily" },
+                    { value: "3x", label: "3x daily" },
                   ]}
                 />
 

@@ -1,11 +1,12 @@
 [
   {
     "id": "admin-1",
-    "firstName": "Sarah",
-    "lastName": "Chen",
+    "firstName": "Medadhere",
+    "lastName": "Super",
     "email": "admin@medadhere.com",
     "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
     "role": "admin",
+    "superAdmin": true,
     "createdAt": "2025-01-01T00:00:00Z"
   },
   {

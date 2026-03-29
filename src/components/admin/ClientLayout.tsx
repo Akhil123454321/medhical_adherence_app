@@ -6,10 +6,11 @@ import Topbar from "./Topbar";
 
 interface ClientLayoutProps {
   userName: string;
+  superAdmin?: boolean;
   children: React.ReactNode;
 }
 
-export default function ClientLayout({ userName, children }: ClientLayoutProps) {
+export default function ClientLayout({ userName, superAdmin, children }: ClientLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -27,6 +28,7 @@ export default function ClientLayout({ userName, children }: ClientLayoutProps) 
       <div className="md:ml-64">
         <Topbar
           userName={userName}
+          superAdmin={superAdmin}
           onMenuOpen={() => setSidebarOpen(true)}
         />
         <main className="p-4 sm:p-6">{children}</main>

@@ -11,16 +11,18 @@ export default async function AdminLayout({
   const token = cookieStore.get("auth-token")?.value;
 
   let userName = "Admin";
+  let superAdmin = false;
   if (token) {
     const payload = await verifyToken(token);
     if (payload) {
       userName = `${payload.firstName} ${payload.lastName}`;
+      superAdmin = payload.superAdmin ?? false;
     }
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <ClientLayout userName={userName}>{children}</ClientLayout>
+      <ClientLayout userName={userName} superAdmin={superAdmin}>{children}</ClientLayout>
     </div>
   );
 }
