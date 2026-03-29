@@ -7,5 +7,59 @@
     "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
     "role": "admin",
     "createdAt": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "admin-2",
+    "firstName": "Kyle",
+    "lastName": "Hultgren",
+    "email": "khultgre@purdue.edu",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
+  },
+  {
+    "id": "admin-3",
+    "firstName": "Austin",
+    "lastName": "Herzog",
+    "email": "herzoga@purdue.edu",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
+  },
+  {
+    "id": "admin-4",
+    "firstName": "Jenny",
+    "lastName": "Baenziger",
+    "email": "jbaenz@iu.edu",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
+  },
+  {
+    "id": "admin-5",
+    "firstName": "Adriana",
+    "lastName": "Gardner",
+    "email": "gardneam@purdue.edu",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
+  },
+  {
+    "id": "admin-6",
+    "firstName": "EC",
+    "lastName": "Pearce",
+    "email": "ecpearce@iu.edu",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
+  },
+  {
+    "id": "admin-7",
+    "firstName": "Sonak",
+    "lastName": "Pastakia",
+    "email": "spastaki@gmail.com",
+    "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "createdAt": "2026-03-29T00:00:00Z"
   }
 ]
