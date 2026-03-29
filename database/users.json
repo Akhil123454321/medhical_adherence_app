@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "test-patient-1",
+    "firstName": "Test",
+    "lastName": "Patient",
+    "email": "patient@test.com",
+    "passwordHash": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+    "role": "patient",
+    "cohortId": null,
+    "capId": null,
+    "dosingRegimen": null,
+    "assignedChwId": "test-chw-1",
+    "assignedPatientId": null,
+    "firstLoginComplete": true
+  },
+  {
+    "id": "test-chw-1",
+    "firstName": "Test",
+    "lastName": "CHW",
+    "email": "chw@test.com",
+    "passwordHash": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+    "role": "chw",
+    "cohortId": null,
+    "capId": null,
+    "dosingRegimen": null,
+    "assignedChwId": null,
+    "assignedPatientId": "test-patient-1",
+    "firstLoginComplete": true
+  }
+]
