@@ -49,8 +49,8 @@ export default function LoginPage() {
           return;
         }
 
-        // Need password
-        if (res.status === 400 && data.error === "Password is required") {
+        // Need password (works for both users and admins)
+        if (res.status === 400 && data.error?.includes("Password is required")) {
           setStage("password");
           return;
         }
