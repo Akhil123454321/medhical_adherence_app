@@ -11,7 +11,7 @@
     "dosingRegimen": null,
     "assignedChwId": "test-chw-1",
     "assignedPatientId": null,
-    "firstLoginComplete": true
+    "firstLoginComplete": false
   },
   {
     "id": "test-chw-1",
@@ -25,6 +25,6 @@
     "dosingRegimen": null,
     "assignedChwId": null,
     "assignedPatientId": "test-patient-1",
-    "firstLoginComplete": true
+    "firstLoginComplete": false
   }
 ]
