@@ -8,7 +8,30 @@ import StatsCard from "@/components/ui/StatsCard";
 import Button from "@/components/ui/Button";
 import AdherenceChart from "@/components/admin/AdherenceChart";
 import { AdherenceRecord, Cohort, User } from "@/lib/types";
-import { Activity, CheckCircle, Bell, User as UserIcon, Download } from "lucide-react";
+import { Activity, CheckCircle, Bell, User as UserIcon, Download, Clock } from "lucide-react";
+
+// Dosing time windows per Sonak's spec
+const TIME_WINDOWS = {
+  morning: { label: "Morning", range: "6–10 am", start: 6, end: 10 },
+  midday:  { label: "Midday",  range: "12–3 pm",  start: 12, end: 15 },
+  evening: { label: "Evening", range: "6–11 pm",  start: 18, end: 23 },
+};
+
+type WindowKey = keyof typeof TIME_WINDOWS;
+
+function getWindow(isoTimestamp: string): WindowKey | null {
+  const h = new Date(isoTimestamp).getHours();
+  if (h >= 6  && h < 10) return "morning";
+  if (h >= 12 && h < 15) return "midday";
+  if (h >= 18 && h < 23) return "evening";
+  return null;
+}
+
+function expectedWindows(regimen: string | null): WindowKey[] {
+  if (regimen === "2x") return ["morning", "evening"];
+  if (regimen === "3x") return ["morning", "midday", "evening"];
+  return [];
+}
 
 export default function DataPage() {
   const [cohorts, setCohorts] = useState<Cohort[]>([]);
@@ -94,7 +117,20 @@ export default function DataPage() {
       // Resolve CHW name
       const chw = user.assignedChwId ? users.find((u) => u.id === user.assignedChwId) : null;
 
-      return { ...user, self, chwRecorded, chwNotified, capOpened, total, selfRate, capRate, chw };
+      // Time window analysis — uses capTimestamp if available, else reportTimestamp
+      const windows: Record<WindowKey, number> = { morning: 0, midday: 0, evening: 0 };
+      const inWindow: Record<WindowKey, number> = { morning: 0, midday: 0, evening: 0 };
+      const expected = expectedWindows(user.dosingRegimen);
+      userRecords.forEach((r) => {
+        const ts = r.capTimestamp ?? r.reportTimestamp;
+        if (!ts) return;
+        const w = getWindow(ts);
+        if (!w) return;
+        windows[w]++;
+        if (expected.includes(w)) inWindow[w]++;
+      });
+
+      return { ...user, self, chwRecorded, chwNotified, capOpened, total, selfRate, capRate, chw, windows, inWindow, expectedWindows: expected };
     });
   }, [cohortUsers, records, users]);
 
@@ -266,6 +302,75 @@ export default function DataPage() {
                     </tr>
                   );
                 })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
+
+      {/* Time Window Compliance */}
+      <Card>
+        <div className="mb-4 flex items-center gap-2">
+          <Clock className="h-5 w-5 text-indigo-400" />
+          <h3 className="text-lg font-semibold text-gray-900">Dosing Time Window Compliance</h3>
+        </div>
+        <div className="mb-3 flex flex-wrap gap-4 text-xs text-gray-500">
+          <span><strong>BID (2x):</strong> Morning 6–10 am · Evening 6–11 pm</span>
+          <span><strong>TID (3x):</strong> Morning 6–10 am · Midday 12–3 pm · Evening 6–11 pm</span>
+        </div>
+        {loading ? (
+          <p className="text-sm text-gray-400 py-4">Loading…</p>
+        ) : userAdherence.filter(u => u.expectedWindows.length > 0).length === 0 ? (
+          <p className="text-sm text-gray-400 py-4">No BID or TID patients in this cohort.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200">
+                  <th className="px-3 py-3 font-medium text-gray-500">Patient</th>
+                  <th className="px-3 py-3 font-medium text-gray-500">Dosing</th>
+                  <th className="px-3 py-3 font-medium text-gray-500 text-center">Morning<br /><span className="text-xs font-normal text-gray-400">6–10 am</span></th>
+                  <th className="px-3 py-3 font-medium text-gray-500 text-center">Midday<br /><span className="text-xs font-normal text-gray-400">12–3 pm</span></th>
+                  <th className="px-3 py-3 font-medium text-gray-500 text-center">Evening<br /><span className="text-xs font-normal text-gray-400">6–11 pm</span></th>
+                  <th className="px-3 py-3 font-medium text-gray-500 text-center">Outside Window</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userAdherence
+                  .filter(u => u.expectedWindows.length > 0)
+                  .map((user) => {
+                    const outsideWindow = user.total - Object.values(user.windows).reduce((a, b) => a + b, 0)
+                      + Object.entries(user.windows).reduce((acc, [w, count]) =>
+                        acc + (user.expectedWindows.includes(w as WindowKey) ? 0 : count), 0);
+                    return (
+                      <tr key={user.id} className="border-b border-gray-100 hover:bg-gray-50">
+                        <td className="px-3 py-2.5">
+                          <p className="font-medium text-gray-900">{user.firstName} {user.lastName}</p>
+                        </td>
+                        <td className="px-3 py-2.5 text-gray-500">{user.dosingRegimen}</td>
+                        {(["morning", "midday", "evening"] as WindowKey[]).map((w) => {
+                          const expected = user.expectedWindows.includes(w);
+                          const count = user.windows[w] ?? 0;
+                          return (
+                            <td key={w} className="px-3 py-2.5 text-center">
+                              {expected ? (
+                                <span className={`font-medium ${count > 0 ? "text-emerald-600" : "text-gray-300"}`}>
+                                  {count}
+                                </span>
+                              ) : (
+                                <span className="text-gray-200">—</span>
+                              )}
+                            </td>
+                          );
+                        })}
+                        <td className="px-3 py-2.5 text-center">
+                          <span className={`font-medium ${outsideWindow > 0 ? "text-amber-600" : "text-gray-300"}`}>
+                            {outsideWindow > 0 ? outsideWindow : "0"}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

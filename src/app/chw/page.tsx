@@ -38,7 +38,7 @@ export default function ChwPage() {
   >({});
   const [pendingAction, setPendingAction] = useState<{
     patientId: string;
-    recordType: "chw_recorded" | "chw_notified";
+    recordType: "chw_notified";
     contactMethod: string;
   } | null>(null);
 
@@ -278,13 +278,11 @@ export default function ChwPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {patients.map((patient) => {
             const hasTaken = patient.todayRecords.some(
-              (r) =>
-                r.recordType === "self" || r.recordType === "chw_recorded"
+              (r) => r.recordType === "self"
             );
             const hasNotified = patient.todayRecords.some(
               (r) => r.recordType === "chw_notified"
             );
-            const recordState = getState(patient.id, "chw_recorded");
             const notifyState = getState(patient.id, "chw_notified");
 
             return (
@@ -356,48 +354,24 @@ export default function ChwPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-3">
-                    {/* Record taken */}
-                    <div>
-                      <button
-                        onClick={() => setPendingAction({ patientId: patient.id, recordType: "chw_recorded", contactMethod: "" })}
-                        disabled={recordState.loading}
-                        className="w-full rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-60 transition-colors"
-                      >
-                        {recordState.loading ? "Recording…" : "Record taken"}
-                      </button>
-                      {recordState.success && (
-                        <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
-                          <CheckCircle className="h-3 w-3" />{recordState.success}
-                        </p>
-                      )}
-                      {recordState.error && (
-                        <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
-                          <AlertCircle className="h-3 w-3" />{recordState.error}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Notified patient */}
-                    <div>
-                      <button
-                        onClick={() => setPendingAction({ patientId: patient.id, recordType: "chw_notified", contactMethod: "" })}
-                        disabled={notifyState.loading}
-                        className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-60 transition-colors"
-                      >
-                        {notifyState.loading ? "Recording…" : "Notified patient"}
-                      </button>
-                      {notifyState.success && (
-                        <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
-                          <CheckCircle className="h-3 w-3" />{notifyState.success}
-                        </p>
-                      )}
-                      {notifyState.error && (
-                        <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
-                          <AlertCircle className="h-3 w-3" />{notifyState.error}
-                        </p>
-                      )}
-                    </div>
+                  <div>
+                    <button
+                      onClick={() => setPendingAction({ patientId: patient.id, recordType: "chw_notified", contactMethod: "" })}
+                      disabled={notifyState.loading}
+                      className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-60 transition-colors"
+                    >
+                      {notifyState.loading ? "Recording…" : "Notified patient"}
+                    </button>
+                    {notifyState.success && (
+                      <p className="mt-1 flex items-center gap-1 text-xs text-green-600">
+                        <CheckCircle className="h-3 w-3" />{notifyState.success}
+                      </p>
+                    )}
+                    {notifyState.error && (
+                      <p className="mt-1 flex items-center gap-1 text-xs text-red-600">
+                        <AlertCircle className="h-3 w-3" />{notifyState.error}
+                      </p>
+                    )}
                   </div>
                 )}
 
