@@ -7,8 +7,7 @@ import Select from "@/components/ui/Select";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
-import { mockCohorts } from "@/lib/mock-data";
-import { User, UserRole } from "@/lib/types";
+import { User, UserRole, Cohort } from "@/lib/types";
 import { ROLE_LABELS } from "@/constants";
 import { Upload, CheckCircle, AlertCircle, SkipForward } from "lucide-react";
 
@@ -65,6 +64,7 @@ const roleVariant: Record<string, "info" | "success" | "warning" | "default"> = 
 
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
+  const [cohorts, setCohorts] = useState<Cohort[]>([]);
   const [loading, setLoading] = useState(true);
   const [roleFilter, setRoleFilter] = useState("all");
   const [cohortFilter, setCohortFilter] = useState("all");
@@ -137,10 +137,13 @@ export default function UsersPage() {
   // ---------------------------------------
 
   useEffect(() => {
-    fetch("/api/users")
-      .then((r) => r.json())
-      .then((data: User[]) => {
-        setUsers(data);
+    Promise.all([
+      fetch("/api/users").then((r) => r.json()),
+      fetch("/api/cohorts").then((r) => r.json()),
+    ])
+      .then(([usersData, cohortsData]: [User[], Cohort[]]) => {
+        setUsers(usersData);
+        setCohorts(cohortsData);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -273,7 +276,7 @@ export default function UsersPage() {
             onChange={(e) => setCohortFilter(e.target.value)}
             options={[
               { value: "all", label: "All Cohorts" },
-              ...mockCohorts.map((c) => ({
+              ...cohorts.map((c) => ({
                 value: c.id,
                 label: c.name,
               })),
@@ -300,7 +303,7 @@ export default function UsersPage() {
             </thead>
             <tbody>
               {filteredUsers.map((user) => {
-                const cohort = mockCohorts.find((c) => c.id === user.cohortId);
+                const cohort = cohorts.find((c) => c.id === user.cohortId);
                 return (
                   <tr
                     key={user.id}
@@ -359,7 +362,7 @@ export default function UsersPage() {
               <div>
                 <p className="text-sm font-medium text-gray-500">Cohort</p>
                 <p className="text-gray-900">
-                  {mockCohorts.find((c) => c.id === selectedUser.cohortId)
+                  {cohorts.find((c) => c.id === selectedUser.cohortId)
                     ?.name || "—"}
                 </p>
               </div>

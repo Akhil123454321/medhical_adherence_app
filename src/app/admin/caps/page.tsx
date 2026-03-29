@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import StatsCard from "@/components/ui/StatsCard";
 import Select from "@/components/ui/Select";
 import Input from "@/components/ui/Input";
-import { mockCaps } from "@/lib/mock-data";
 import { Cap } from "@/lib/types";
 import { Package, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
 
@@ -18,10 +17,21 @@ const statusVariant: Record<string, "success" | "info" | "danger" | "default"> =
 };
 
 export default function CapsPage() {
-  const [caps, setCaps] = useState<Cap[]>(mockCaps);
+  const [caps, setCaps] = useState<Cap[]>([]);
+  const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCaps, setSelectedCaps] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    fetch("/api/caps")
+      .then((r) => r.json())
+      .then((data: Cap[]) => {
+        setCaps(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   const stats = useMemo(() => {
     const available = caps.filter((c) => c.status === "available").length;
@@ -72,16 +82,8 @@ export default function CapsPage() {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatsCard title="Total Caps" value={stats.total} icon={Package} />
-        <StatsCard
-          title="Available"
-          value={stats.available}
-          icon={CheckCircle}
-        />
-        <StatsCard
-          title="Assigned"
-          value={stats.assigned}
-          icon={AlertTriangle}
-        />
+        <StatsCard title="Available" value={stats.available} icon={CheckCircle} />
+        <StatsCard title="Assigned" value={stats.assigned} icon={AlertTriangle} />
         <StatsCard title="Broken" value={stats.broken} icon={XCircle} />
       </div>
 
@@ -125,77 +127,86 @@ export default function CapsPage() {
               </Button>
             </div>
           )}
+          <span className="ml-auto text-sm text-gray-400">
+            {loading ? "Loading..." : `${filteredCaps.length} caps`}
+          </span>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead>
-              <tr className="border-b border-gray-200">
-                <th className="px-3 py-3 font-medium text-gray-500">
-                  <input
-                    type="checkbox"
-                    className="rounded border-gray-300"
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedCaps(
-                          new Set(filteredCaps.map((c) => c.id))
-                        );
-                      } else {
-                        setSelectedCaps(new Set());
-                      }
-                    }}
-                    checked={
-                      filteredCaps.length > 0 &&
-                      filteredCaps.every((c) => selectedCaps.has(c.id))
-                    }
-                  />
-                </th>
-                <th className="px-3 py-3 font-medium text-gray-500">Cap ID</th>
-                <th className="px-3 py-3 font-medium text-gray-500">Status</th>
-                <th className="px-3 py-3 font-medium text-gray-500">
-                  Assigned To
-                </th>
-                <th className="px-3 py-3 font-medium text-gray-500">Cohort</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredCaps.slice(0, 50).map((cap) => (
-                <tr
-                  key={cap.id}
-                  className="border-b border-gray-100 hover:bg-gray-50"
-                >
-                  <td className="px-3 py-2.5">
+        {!loading && caps.length === 0 ? (
+          <div className="py-12 text-center">
+            <Package className="mx-auto mb-3 h-10 w-10 text-gray-300" />
+            <p className="text-sm font-medium text-gray-500">No caps registered yet</p>
+            <p className="mt-1 text-xs text-gray-400">
+              Upload cap CSV files from the Cap Event Logs page to register caps.
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200">
+                  <th className="px-3 py-3 font-medium text-gray-500">
                     <input
                       type="checkbox"
                       className="rounded border-gray-300"
-                      checked={selectedCaps.has(cap.id)}
-                      onChange={() => toggleCapSelection(cap.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedCaps(new Set(filteredCaps.map((c) => c.id)));
+                        } else {
+                          setSelectedCaps(new Set());
+                        }
+                      }}
+                      checked={
+                        filteredCaps.length > 0 &&
+                        filteredCaps.every((c) => selectedCaps.has(c.id))
+                      }
                     />
-                  </td>
-                  <td className="px-3 py-2.5 font-medium text-gray-900">
-                    #{cap.id}
-                  </td>
-                  <td className="px-3 py-2.5">
-                    <Badge variant={statusVariant[cap.status]}>
-                      {cap.status}
-                    </Badge>
-                  </td>
-                  <td className="px-3 py-2.5 text-gray-500">
-                    {cap.assignedTo || "—"}
-                  </td>
-                  <td className="px-3 py-2.5 text-gray-500">
-                    {cap.cohortId || "—"}
-                  </td>
+                  </th>
+                  <th className="px-3 py-3 font-medium text-gray-500">Cap ID</th>
+                  <th className="px-3 py-3 font-medium text-gray-500">Status</th>
+                  <th className="px-3 py-3 font-medium text-gray-500">Assigned To</th>
+                  <th className="px-3 py-3 font-medium text-gray-500">Cohort</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          {filteredCaps.length > 50 && (
-            <p className="mt-3 text-center text-sm text-gray-400">
-              Showing 50 of {filteredCaps.length} caps
-            </p>
-          )}
-        </div>
+              </thead>
+              <tbody>
+                {filteredCaps.slice(0, 50).map((cap) => (
+                  <tr
+                    key={cap.id}
+                    className="border-b border-gray-100 hover:bg-gray-50"
+                  >
+                    <td className="px-3 py-2.5">
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300"
+                        checked={selectedCaps.has(cap.id)}
+                        onChange={() => toggleCapSelection(cap.id)}
+                      />
+                    </td>
+                    <td className="px-3 py-2.5 font-medium text-gray-900">
+                      #{cap.id}
+                    </td>
+                    <td className="px-3 py-2.5">
+                      <Badge variant={statusVariant[cap.status]}>
+                        {cap.status}
+                      </Badge>
+                    </td>
+                    <td className="px-3 py-2.5 text-gray-500">
+                      {cap.assignedTo || "—"}
+                    </td>
+                    <td className="px-3 py-2.5 text-gray-500">
+                      {cap.cohortId || "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {filteredCaps.length > 50 && (
+              <p className="mt-3 text-center text-sm text-gray-400">
+                Showing 50 of {filteredCaps.length} caps
+              </p>
+            )}
+          </div>
+        )}
       </Card>
     </div>
   );

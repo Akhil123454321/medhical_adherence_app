@@ -29,6 +29,13 @@ const LIKELIHOOD = [
   "Very likely",
 ];
 const ADHERENCE_PCT = ["<60%", "60-70%", "70-80%", "80-90%", "90-100%"];
+const MATCH_STATUS = [
+  "Did not apply",
+  "Military",
+  "Matched through regular match",
+  "Matched through SOAP",
+  "Applied but did not match through the match nor SOAP",
+];
 const STRESSORS = [
   "Staying away from home (i.e. in a hotel or temporary housing)",
   "Moving",
@@ -49,7 +56,7 @@ const STRESSORS = [
 ];
 
 // ── Study information text ───────────────────────────────────────────────────
-const MED_INFO = `You are being asked to complete this survey as a part of a research project about an educational simulation about medication adherence. You will be asked to complete a short survey at the beginning and end of the exercise. The exercise itself and the surveys are a required part of your course, but the inclusion of your data in the research study is voluntary. There is no compensation for this study. However, you may be eligible to join a lottery to win a gift card with a value of $50; the number of lottery entries you receive will be based on the level of medication adherence achieved. The risk of educational or personal harm to you by this exercise is minimal but would include: loss of personal data provided in the survey and risk of adverse reactions (poor taste, allergies) to the medication placebos given. The medication placebos will be commercially available food products. If you have food allergies, contact the study investigator (Jenny Baenziger, jbaenz@iu.edu) before starting the exercise. Your participation or abstaining from this study will not affect your course grade; the course director will not be informed of who elected in nor out of the study. If you have questions about the study or if you would like your survey responses to be excluded from the study, please contact Jenny Baenziger, MD (jbaenz@iu.edu).`;
+const MED_INFO = `You are being asked to complete this survey as a part of a research project about an educational simulation about medication adherence. This exercise involves taking placebo medications for a week with or without the assistance of a classmate serving in the role of a community health worker. You will be asked to complete a short survey at the beginning and end of the exercise. The exercise itself and the surveys are a required part of your course, but the inclusion of your data in the research study is voluntary. There is no compensation for this study. However, you may be eligible to join a lottery to win a gift card with a value of $50; the number of lottery entries you receive will be based on the level of medication adherence achieved. The risk of educational or personal harm to you by this exercise is minimal. No full personally identifiable information will be collected, and to minimize the risk that someone could extrapolate your identity from the unique identifier code used, the data will only be stored on an encrypted device and only be accessible to faculty personnel. There is a risk of adverse reactions (poor taste, allergies) to the medication placebos given; to minimize this risk, the medication placebos are commercially available food products. If you have food allergies, contact the study investigator (Jenny Baenziger, jbaenz@iu.edu) before starting the exercise. Your participation or abstaining from this study will not affect your course grade; the course director will not be informed of who elected in nor out of the study. If you have questions about the study or if you would like your survey responses to be excluded from the study, please contact Jenny Baenziger, MD (jbaenz@iu.edu).`;
 
 const PHARMACY_INFO = `You are being asked to complete this survey as a part of a research project about an educational simulation about medication adherence. You will be asked to complete a short survey at the beginning and end of the exercise. The exercise itself and the surveys are a required part of your course, but the inclusion of your data in the research study is voluntary. There is no compensation for this study. The risk of educational or personal harm to you by this exercise is minimal but would include: loss of personal data provided in the survey and risk of adverse reactions (poor taste, allergies) to the medication placebos given. The medication placebos will be commercially available food products. If you have food allergies, contact the study investigator (Kyle Hultgren, khultgre@purdue.edu) before starting the exercise. Your participation or abstaining from this study will not affect your course grade; the course director will not be informed of who elected in nor out of the study until after grades are finalized. If you have questions about the study or if you would like your survey responses to be excluded from the study, please contact Kyle Hultgren, PharmD (khultgre@purdue.edu).`;
 
@@ -61,7 +68,6 @@ interface UserProfile {
 
 type Answers = {
   uniqueIdentifier: string;
-  medicationAdherenceChoice: string;
   difficultyRating: string;
   chwImprovesAdherence: string;
   chwWorthwhile: string;
@@ -72,8 +78,11 @@ type Answers = {
   relationshipStatus: string;
   dependents: string;
   gpa: string;
+  step2Score: string;
+  matchStatus: string;
   dailyMedications: string;
   helpedLovedOne: string;
+  dataConsent: string;
   stressors: string[];
 };
 
@@ -134,7 +143,6 @@ export default function OnboardingPage() {
   const [consented, setConsented] = useState(false);
   const [answers, setAnswers] = useState<Answers>({
     uniqueIdentifier: "",
-    medicationAdherenceChoice: "",
     difficultyRating: "",
     chwImprovesAdherence: "",
     chwWorthwhile: "",
@@ -145,8 +153,11 @@ export default function OnboardingPage() {
     relationshipStatus: "",
     dependents: "",
     gpa: "",
+    step2Score: "",
+    matchStatus: "",
     dailyMedications: "",
     helpedLovedOne: "",
+    dataConsent: "",
     stressors: [],
   });
   const [submitting, setSubmitting] = useState(false);
@@ -178,7 +189,6 @@ export default function OnboardingPage() {
     if (step === 1) {
       return (
         answers.uniqueIdentifier.trim().length >= 3 &&
-        !!answers.medicationAdherenceChoice &&
         !!answers.difficultyRating &&
         !!answers.chwImprovesAdherence &&
         !!answers.chwWorthwhile &&
@@ -194,7 +204,9 @@ export default function OnboardingPage() {
         !!answers.dependents &&
         !!answers.dailyMedications &&
         !!answers.helpedLovedOne &&
-        (!isPharmacy || answers.gpa.trim().length > 0)
+        (!isPharmacy || answers.gpa.trim().length > 0) &&
+        (isPharmacy || (answers.step2Score.trim().length > 0 && !!answers.matchStatus)) &&
+        !!answers.dataConsent
       );
     }
     return true; // step 3: stressors optional
@@ -324,12 +336,6 @@ export default function OnboardingPage() {
               </div>
 
               <LikertScale
-                question="Medication adherence is a personal choice over which patients have full control."
-                options={AGREE}
-                value={answers.medicationAdherenceChoice}
-                onChange={(v) => set("medicationAdherenceChoice", v)}
-              />
-              <LikertScale
                 question="Rate the level of difficulty that you think it is for patients to take all medications as prescribed by a physician."
                 options={DIFFICULTY}
                 value={answers.difficultyRating}
@@ -416,6 +422,30 @@ export default function OnboardingPage() {
                 </div>
               )}
 
+              {!isPharmacy && (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-800">
+                    What was your Step 2 score?
+                  </p>
+                  <input
+                    type="text"
+                    value={answers.step2Score}
+                    onChange={(e) => set("step2Score", e.target.value)}
+                    placeholder="e.g. 240"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  />
+                </div>
+              )}
+
+              {!isPharmacy && (
+                <RadioQ
+                  question="What is your Match status?"
+                  options={MATCH_STATUS}
+                  value={answers.matchStatus}
+                  onChange={(v) => set("matchStatus", v)}
+                />
+              )}
+
               <RadioQ
                 question="Are you on any daily, chronic medications?"
                 options={[
@@ -435,6 +465,13 @@ export default function OnboardingPage() {
                 ]}
                 value={answers.helpedLovedOne}
                 onChange={(v) => set("helpedLovedOne", v)}
+              />
+
+              <RadioQ
+                question="I agree to have my survey data included in an educational study about this simulation exercise. I understand my data is not personally identifiable in any way."
+                options={["Yes", "No"]}
+                value={answers.dataConsent}
+                onChange={(v) => set("dataConsent", v)}
               />
             </>
           )}

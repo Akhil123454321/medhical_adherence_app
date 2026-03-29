@@ -67,7 +67,6 @@ const PATIENT_STRATEGIES = [
   "Setting a reminder",
   "Leaving the pill bottle out",
   "Leaving a note out",
-  "Using a pill box",
   "Other",
 ];
 const CHW_BARRIERS = [
@@ -86,7 +85,7 @@ const CHW_STRATEGIES = [
   "Discussion of strategies to help them remember",
   "Other",
 ];
-const PCT_TAKEN = ["<25%", "25-49%", "50-74%", "75-100%"];
+const PCT_TAKEN = ["<60%", "60-70%", "70-80%", "80-90%", "90-100%"];
 const MISSED = ["Yes", "No", "Unsure"];
 
 // ── Types ────────────────────────────────────────────────────────────────────

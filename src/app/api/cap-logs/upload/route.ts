@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { writeCapLog } from "@/lib/db";
+import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 
 // Kyle's office machine POSTs CSV files here after collecting caps.
 // Authenticate with:  x-api-key: <CAP_UPLOAD_API_KEY>
+// Admin users can also upload via the admin UI (session cookie auth).
 // Body: multipart/form-data, one or more fields named "file" (or any name).
 // Each CSV must have the cap ID on the first line, then event,timestamp rows.
 
@@ -11,18 +13,20 @@ function unauthorized() {
 }
 
 export async function POST(request: NextRequest) {
+  // Accept either API key (Kyle's machine) or admin session cookie (admin UI)
   const apiKey = process.env.CAP_UPLOAD_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "Server not configured for cap uploads (missing CAP_UPLOAD_API_KEY)" },
-      { status: 500 }
-    );
+  const providedApiKey = request.headers.get("x-api-key");
+
+  let authorized = false;
+  if (apiKey && providedApiKey && providedApiKey === apiKey) {
+    authorized = true;
+  } else {
+    const token = request.cookies.get(AUTH_COOKIE)?.value;
+    const payload = token ? await verifyToken(token) : null;
+    if (payload?.role === "admin") authorized = true;
   }
 
-  const provided = request.headers.get("x-api-key");
-  if (!provided || provided !== apiKey) {
-    return unauthorized();
-  }
+  if (!authorized) return unauthorized();
 
   const contentType = request.headers.get("content-type") ?? "";
   if (!contentType.includes("multipart/form-data")) {

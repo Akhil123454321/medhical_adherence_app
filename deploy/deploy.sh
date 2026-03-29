@@ -14,8 +14,8 @@
 # ---------------------------------------------------------------------------
 # CONFIGURE THESE
 # ---------------------------------------------------------------------------
-KEY="${KEY:-./medhadhere.pem}"
-SERVER_IP="${SERVER_IP:-}"        # e.g. 54.123.45.67  — set this!
+KEY="${KEY:-./medhadhere-prod.pem}"
+SERVER_IP="${SERVER_IP:-98.81.186.163}"
 SERVER_USER="${SERVER_USER:-ubuntu}"
 REMOTE_APP_DIR="/var/www/medadhere"
 REMOTE_DB_DIR="/var/db/medadhere"
