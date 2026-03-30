@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDB, readCapLog } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
-import { User, Cohort, Question, AdherenceRecord, SurveyResponse } from "@/lib/types";
+import { User, Cohort, AdherenceRecord, SurveyResponse } from "@/lib/types";
 
 // All timestamps are converted to Indiana time for window matching.
 const TIMEZONE = "America/Indiana/Indianapolis";
@@ -79,10 +79,8 @@ export async function GET(request: NextRequest) {
   const allUsers    = readDB<User>("users");
   const allRecords  = readDB<AdherenceRecord>("adherence-records");
   const allSurveys  = readDB<SurveyResponse>("survey-responses");
-  const allQuestions = readDB<Question>("questions");
 
   const cohortUsers  = allUsers.filter(u => u.cohortId === cohortId && u.role !== "admin");
-  const cohortQs     = allQuestions.filter(q => q.cohortIds.includes(cohortId));
   const cohortIds    = new Set(cohortUsers.map(u => u.id));
 
   // Pre-survey answers keyed by userId
@@ -100,6 +98,11 @@ export async function GET(request: NextRequest) {
       postSurvey[sr.userId] = { ...(postSurvey[sr.userId] ?? {}), ...sr.answers };
     }
   }
+
+  // Collect all pre-survey answer keys across all users (demographic + attitude fields)
+  const preKeys = Array.from(
+    new Set(Object.values(preSurvey).flatMap(a => Object.keys(a)))
+  ).sort();
 
   // Collect all post-survey answer keys across all users (dynamic questions)
   const postKeys = Array.from(
@@ -122,9 +125,9 @@ export async function GET(request: NextRequest) {
   // ── Header row ─────────────────────────────────────────────────────────────
   const headers: string[] = ["student_id", "assigned_role_detailed"];
 
-  // Pre-survey question columns
-  for (const q of cohortQs) {
-    headers.push(`Pre_${q.text.slice(0, 60)}`);
+  // Pre-survey columns (all unique keys found in responses — demographics + attitudes)
+  for (const k of preKeys) {
+    headers.push(`Pre_${k}`);
   }
   // Post-survey columns (all unique keys found in responses)
   for (const k of postKeys) {
@@ -161,8 +164,8 @@ export async function GET(request: NextRequest) {
     const activeWindows: number[] = dosing === "3x" ? [0, 1, 2] : [0, 2];
 
     // Survey values
-    const preVals = cohortQs.map(q => {
-      const v = (preSurvey[user.id] ?? {})[q.id];
+    const preVals = preKeys.map(k => {
+      const v = (preSurvey[user.id] ?? {})[k];
       return Array.isArray(v) ? v.join("; ") : (v !== undefined ? String(v) : "");
     });
     const postVals = postKeys.map(k => {
