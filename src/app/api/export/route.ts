@@ -53,13 +53,20 @@ function detailedRole(user: User, allUsers: User[]): string {
   return user.role;
 }
 
-// Escape a single CSV cell value.
-function cell(v: string | number | boolean | null | undefined): string {
+// Escape a single CSV cell value. Handles arrays by joining with " | ".
+function cell(v: unknown): string {
   if (v === null || v === undefined) return "";
-  const s = String(v);
+  const s = Array.isArray(v) ? v.join(" | ") : String(v);
   return s.includes(",") || s.includes('"') || s.includes("\n")
     ? `"${s.replace(/"/g, '""')}"`
     : s;
+}
+
+// Serialize a survey answer value to a CSV-safe string.
+function surveyVal(v: unknown): string {
+  if (v === null || v === undefined) return "";
+  if (Array.isArray(v)) return v.join(" | ");
+  return String(v);
 }
 
 export async function GET(request: NextRequest) {
@@ -164,14 +171,8 @@ export async function GET(request: NextRequest) {
     const activeWindows: number[] = dosing === "3x" ? [0, 1, 2] : [0, 2];
 
     // Survey values
-    const preVals = preKeys.map(k => {
-      const v = (preSurvey[user.id] ?? {})[k];
-      return Array.isArray(v) ? v.join("; ") : (v !== undefined ? String(v) : "");
-    });
-    const postVals = postKeys.map(k => {
-      const v = (postSurvey[user.id] ?? {})[k];
-      return Array.isArray(v) ? v.join("; ") : (v !== undefined ? String(v) : "");
-    });
+    const preVals  = preKeys.map(k  => surveyVal((preSurvey[user.id]  ?? {})[k]));
+    const postVals = postKeys.map(k => surveyVal((postSurvey[user.id] ?? {})[k]));
 
     // Adherence records for this user
     const userRecords = allRecords.filter(r => {
