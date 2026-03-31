@@ -13,6 +13,7 @@ import { Plus, Calendar, MapPin, Users, Key } from "lucide-react";
 interface CreatedUser {
   email: string;
   role: string;
+  dosing?: string | null;
 }
 
 export default function CohortsPage() {
@@ -39,6 +40,7 @@ export default function CohortsPage() {
     capRangeEnd: number;
     patientEmails: string[];
     chwEmails: string[];
+    students: unknown[];
   }) {
     const res = await fetch("/api/cohorts", {
       method: "POST",
@@ -152,6 +154,7 @@ export default function CohortsPage() {
                 <tr>
                   <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase">Email</th>
                   <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase">Role</th>
+                  <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase">Dosing</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -159,6 +162,9 @@ export default function CohortsPage() {
                   <tr key={u.email}>
                     <td className="px-4 py-2.5 font-mono text-xs text-gray-700">{u.email}</td>
                     <td className="px-4 py-2.5 text-xs capitalize text-gray-700">{u.role}</td>
+                    <td className="px-4 py-2.5 text-xs text-gray-500">
+                      {u.dosing === "2x" ? "BID" : u.dosing === "3x" ? "TID" : "—"}
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -1,8 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import { Upload, X, CheckCircle, AlertCircle } from "lucide-react";
+
+interface ParsedStudent {
+  name: string;
+  email: string;
+  role: "patient" | "chw";
+  vialNumber: string | null;
+  dosing: "2x" | "3x" | null;
+  chwEmail: string | null;
+}
 
 interface CohortFormProps {
   onSubmit: (data: {
@@ -15,6 +25,7 @@ interface CohortFormProps {
     capRangeEnd: number;
     patientEmails: string[];
     chwEmails: string[];
+    students: ParsedStudent[];
   }) => void;
   onCancel: () => void;
 }
@@ -37,6 +48,53 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
   const [patientEmailsText, setPatientEmailsText] = useState("");
   const [chwEmailsText, setChwEmailsText] = useState("");
 
+  // CSV/XLSX import state
+  const [importedStudents, setImportedStudents] = useState<ParsedStudent[]>([]);
+  const [importFileName, setImportFileName] = useState<string | null>(null);
+  const [importLoading, setImportLoading] = useState(false);
+  const [importError, setImportError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImportLoading(true);
+    setImportError(null);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/cohorts/parse-import", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setImportError(data.error || "Failed to parse file");
+        return;
+      }
+      setImportedStudents(data.students);
+      setImportFileName(file.name);
+      // Auto-fill cap range if detected
+      if (data.capRangeStart != null) setCapRangeStart(String(data.capRangeStart));
+      if (data.capRangeEnd != null) setCapRangeEnd(String(data.capRangeEnd));
+    } catch {
+      setImportError("Network error uploading file");
+    } finally {
+      setImportLoading(false);
+      // Reset input so same file can be re-selected
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  }
+
+  function clearImport() {
+    setImportedStudents([]);
+    setImportFileName(null);
+    setImportError(null);
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     onSubmit({
@@ -47,10 +105,14 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
       description,
       capRangeStart: parseInt(capRangeStart) || 0,
       capRangeEnd: parseInt(capRangeEnd) || 0,
-      patientEmails: parseEmails(patientEmailsText),
-      chwEmails: parseEmails(chwEmailsText),
+      patientEmails: importedStudents.length > 0 ? [] : parseEmails(patientEmailsText),
+      chwEmails: importedStudents.length > 0 ? [] : parseEmails(chwEmailsText),
+      students: importedStudents,
     });
   }
+
+  const patients = importedStudents.filter((s) => s.role === "patient");
+  const chws = importedStudents.filter((s) => s.role === "chw");
 
   const textareaClass =
     "block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono";
@@ -123,42 +185,131 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
         />
       </div>
 
-      {/* Email sections */}
+      {/* Participant section */}
       <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-4">
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-          Participant Emails — roles are assigned here
-        </p>
-        <div className="space-y-1">
-          <label htmlFor="patient-emails" className="block text-sm font-medium text-gray-700">
-            Patient emails
-            <span className="ml-1 font-normal text-gray-400">(one per line or comma-separated)</span>
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+            Participants
+          </p>
+          {/* Upload button */}
+          <label className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50 transition-colors">
+            <Upload className="h-3.5 w-3.5" />
+            {importLoading ? "Parsing…" : "Upload CSV / XLSX"}
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".csv,.xlsx,.xls"
+              className="hidden"
+              onChange={handleFileUpload}
+              disabled={importLoading}
+            />
           </label>
-          <textarea
-            id="patient-emails"
-            value={patientEmailsText}
-            onChange={(e) => setPatientEmailsText(e.target.value)}
-            className={textareaClass}
-            rows={3}
-            placeholder={"alice@example.com\nbob@example.com"}
-          />
         </div>
-        <div className="space-y-1">
-          <label htmlFor="chw-emails" className="block text-sm font-medium text-gray-700">
-            CHW emails
-            <span className="ml-1 font-normal text-gray-400">(one per line or comma-separated)</span>
-          </label>
-          <textarea
-            id="chw-emails"
-            value={chwEmailsText}
-            onChange={(e) => setChwEmailsText(e.target.value)}
-            className={textareaClass}
-            rows={3}
-            placeholder={"carol@example.com\ndave@example.com"}
-          />
-        </div>
-        <p className="text-xs text-gray-400">
-          Users log in with email only — no password required.
-        </p>
+
+        {importError && (
+          <div className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+            <AlertCircle className="h-3.5 w-3.5 flex-shrink-0" />
+            {importError}
+          </div>
+        )}
+
+        {importedStudents.length > 0 ? (
+          /* Imported preview */
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs text-green-700">
+                <CheckCircle className="h-3.5 w-3.5" />
+                <span className="font-medium">{importFileName}</span>
+                <span className="text-gray-400">—</span>
+                <span>{patients.length} patients, {chws.length} CHWs</span>
+              </div>
+              <button
+                type="button"
+                onClick={clearImport}
+                className="rounded p-0.5 text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </div>
+
+            <div className="max-h-52 overflow-y-auto rounded-lg border border-gray-200 bg-white">
+              <table className="w-full text-xs">
+                <thead className="sticky top-0 bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-500">Email</th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-500">Role</th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-500">Dosing</th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-500">Cap</th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-500">CHW</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {importedStudents.map((s) => (
+                    <tr key={s.email} className={s.role === "chw" ? "bg-blue-50/40" : ""}>
+                      <td className="px-3 py-1.5 font-mono text-gray-700">{s.email}</td>
+                      <td className="px-3 py-1.5">
+                        <span className={`rounded-full px-1.5 py-0.5 font-medium ${
+                          s.role === "chw"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-green-100 text-green-700"
+                        }`}>
+                          {s.role === "chw" ? "CHW" : "Patient"}
+                        </span>
+                      </td>
+                      <td className="px-3 py-1.5 text-gray-500">
+                        {s.dosing === "2x" ? "BID" : s.dosing === "3x" ? "TID" : "—"}
+                      </td>
+                      <td className="px-3 py-1.5 text-gray-500">
+                        {s.vialNumber ?? <span className="text-gray-300">app only</span>}
+                      </td>
+                      <td className="px-3 py-1.5 font-mono text-gray-400 truncate max-w-[120px]">
+                        {s.chwEmail ?? "—"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-gray-400">
+              Dosing regimens, cap assignments, and CHW pairings will be set automatically.
+            </p>
+          </div>
+        ) : (
+          /* Manual entry fallback */
+          <div className="space-y-4">
+            <p className="text-xs text-gray-400">
+              Or enter emails manually below — upload CSV/XLSX above to auto-fill from a spreadsheet.
+            </p>
+            <div className="space-y-1">
+              <label htmlFor="patient-emails" className="block text-sm font-medium text-gray-700">
+                Patient emails
+                <span className="ml-1 font-normal text-gray-400">(one per line or comma-separated)</span>
+              </label>
+              <textarea
+                id="patient-emails"
+                value={patientEmailsText}
+                onChange={(e) => setPatientEmailsText(e.target.value)}
+                className={textareaClass}
+                rows={3}
+                placeholder={"alice@example.com\nbob@example.com"}
+              />
+            </div>
+            <div className="space-y-1">
+              <label htmlFor="chw-emails" className="block text-sm font-medium text-gray-700">
+                CHW emails
+                <span className="ml-1 font-normal text-gray-400">(one per line or comma-separated)</span>
+              </label>
+              <textarea
+                id="chw-emails"
+                value={chwEmailsText}
+                onChange={(e) => setChwEmailsText(e.target.value)}
+                className={textareaClass}
+                rows={3}
+                placeholder={"carol@example.com\ndave@example.com"}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="flex justify-end gap-3 pt-2">
