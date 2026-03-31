@@ -192,18 +192,23 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
             Participants
           </p>
           {/* Upload button */}
-          <label className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50 transition-colors">
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={importLoading}
+            className="flex items-center gap-1.5 rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50 transition-colors disabled:opacity-50"
+          >
             <Upload className="h-3.5 w-3.5" />
             {importLoading ? "Parsing…" : "Upload CSV / XLSX"}
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".csv,.xlsx,.xls"
-              className="hidden"
-              onChange={handleFileUpload}
-              disabled={importLoading}
-            />
-          </label>
+          </button>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".csv,.xlsx,.xls"
+            className="hidden"
+            onChange={handleFileUpload}
+            disabled={importLoading}
+          />
         </div>
 
         {importError && (
