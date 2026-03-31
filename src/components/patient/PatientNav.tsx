@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Pill, LogOut, User } from "lucide-react";
+import NotificationBell from "@/components/ui/NotificationBell";
 
 interface PatientNavProps {
   userName: string;
@@ -24,11 +25,12 @@ export default function PatientNav({ userName }: PatientNavProps) {
           </div>
           <span className="font-semibold text-gray-900">MedAdhere</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 text-sm text-gray-600">
             <User className="h-4 w-4" />
             <span>{userName}</span>
           </div>
+          <NotificationBell />
           <button
             onClick={handleLogout}
             className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"

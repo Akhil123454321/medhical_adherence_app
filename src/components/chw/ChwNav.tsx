@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { HeartPulse, LogOut, User } from "lucide-react";
+import NotificationBell from "@/components/ui/NotificationBell";
 
 interface ChwNavProps {
   userName: string;
@@ -29,11 +30,12 @@ export default function ChwNav({ userName }: ChwNavProps) {
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 text-sm text-gray-600">
             <User className="h-4 w-4" />
             <span>{userName}</span>
           </div>
+          <NotificationBell />
           <button
             onClick={handleLogout}
             className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"

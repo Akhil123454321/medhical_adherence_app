@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Bell, User, LogOut, Menu, KeyRound, Eye, EyeOff, CheckCircle, AlertCircle } from "lucide-react";
+import { User, LogOut, Menu, KeyRound, Eye, EyeOff, CheckCircle, AlertCircle } from "lucide-react";
+import NotificationBell from "@/components/ui/NotificationBell";
 import { useRouter } from "next/navigation";
 
 interface TopbarProps {
@@ -84,10 +85,7 @@ export default function Topbar({ userName = "Admin", superAdmin = false, onMenuO
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="relative rounded-lg p-2 text-gray-400 hover:bg-gray-50 hover:text-gray-600">
-            <Bell className="h-5 w-5" />
-            <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
-          </button>
+          <NotificationBell />
 
           <div className="hidden items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 sm:flex">
             <User className="h-4 w-4 text-gray-400" />

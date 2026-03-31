@@ -98,3 +98,25 @@ export interface VerificationToken {
   token: string;
   expiresAt: string;
 }
+
+export type NotificationType =
+  | "cohort_start"
+  | "cohort_end"
+  | "pre_survey_reminder"
+  | "post_survey_available"
+  | "patient_missed_today"
+  | "low_adherence"
+  | "new_enrollment";
+
+export interface AppNotification {
+  id: string;
+  userId: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  read: boolean;
+  dismissed: boolean;
+  createdAt: string;
+  cohortId?: string;
+  dedupeKey: string;
+}
