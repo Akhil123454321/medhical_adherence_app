@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { Upload, X, CheckCircle, AlertCircle } from "lucide-react";
+import { X, CheckCircle, AlertCircle } from "lucide-react";
 
 interface ParsedStudent {
   name: string;
@@ -53,7 +53,6 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
   const [importFileName, setImportFileName] = useState<string | null>(null);
   const [importLoading, setImportLoading] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -84,8 +83,6 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
       setImportError("Network error uploading file");
     } finally {
       setImportLoading(false);
-      // Reset input so same file can be re-selected
-      if (fileInputRef.current) fileInputRef.current.value = "";
     }
   }
 
@@ -191,23 +188,13 @@ export default function CohortForm({ onSubmit, onCancel }: CohortFormProps) {
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
             Participants
           </p>
-          {/* Upload button */}
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={importLoading}
-            className="flex items-center gap-1.5 rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-medium text-indigo-600 hover:bg-indigo-50 transition-colors disabled:opacity-50"
-          >
-            <Upload className="h-3.5 w-3.5" />
-            {importLoading ? "Parsing…" : "Upload CSV / XLSX"}
-          </button>
+          {/* Native file input styled as button */}
           <input
-            ref={fileInputRef}
             type="file"
             accept=".csv,.xlsx,.xls"
-            className="hidden"
-            onChange={handleFileUpload}
             disabled={importLoading}
+            onChange={handleFileUpload}
+            className="text-xs text-gray-500 file:cursor-pointer file:rounded-lg file:border file:border-indigo-200 file:bg-white file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-indigo-600 hover:file:bg-indigo-50 file:transition-colors disabled:opacity-50"
           />
         </div>
 
