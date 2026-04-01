@@ -53,20 +53,48 @@ function detailedRole(user: User, allUsers: User[]): string {
   return user.role;
 }
 
-// Escape a single CSV cell value. Handles arrays by joining with " | ".
+// Escape a single CSV cell value.
 function cell(v: unknown): string {
   if (v === null || v === undefined) return "";
-  const s = Array.isArray(v) ? v.join(" | ") : String(v);
+  const s = String(v);
   return s.includes(",") || s.includes('"') || s.includes("\n")
     ? `"${s.replace(/"/g, '""')}"`
     : s;
 }
 
-// Serialize a survey answer value to a CSV-safe string.
+// Serialize a scalar survey answer value to a CSV-safe string.
 function surveyVal(v: unknown): string {
   if (v === null || v === undefined) return "";
   if (Array.isArray(v)) return v.join(" | ");
   return String(v);
+}
+
+// Detect which answer keys are multi-select (any user has an array value for that key).
+function detectMultiSelectKeys(
+  surveys: Record<string, unknown>[],
+  keys: string[]
+): Set<string> {
+  const multi = new Set<string>();
+  for (const k of keys) {
+    for (const answers of surveys) {
+      if (Array.isArray(answers[k])) { multi.add(k); break; }
+    }
+  }
+  return multi;
+}
+
+// Collect all unique option values for a multi-select key across all users.
+function collectOptions(
+  surveys: Record<string, unknown>[],
+  key: string
+): string[] {
+  const opts = new Set<string>();
+  for (const answers of surveys) {
+    const v = answers[key];
+    if (Array.isArray(v)) v.forEach(o => opts.add(String(o)));
+    else if (v !== null && v !== undefined) opts.add(String(v));
+  }
+  return Array.from(opts).sort();
 }
 
 export async function GET(request: NextRequest) {
@@ -116,6 +144,18 @@ export async function GET(request: NextRequest) {
     new Set(Object.values(postSurvey).flatMap(a => Object.keys(a)))
   ).sort();
 
+  // Detect multi-select keys and collect their options
+  const preSurveyList  = Object.values(preSurvey)  as Record<string, unknown>[];
+  const postSurveyList = Object.values(postSurvey) as Record<string, unknown>[];
+  const preMulti  = detectMultiSelectKeys(preSurveyList,  preKeys);
+  const postMulti = detectMultiSelectKeys(postSurveyList, postKeys);
+
+  // Pre-options: map of key → sorted unique option values
+  const preOptions:  Record<string, string[]> = {};
+  for (const k of preKeys)  if (preMulti.has(k))  preOptions[k]  = collectOptions(preSurveyList,  k);
+  const postOptions: Record<string, string[]> = {};
+  for (const k of postKeys) if (postMulti.has(k)) postOptions[k] = collectOptions(postSurveyList, k);
+
   // ── Date range ─────────────────────────────────────────────────────────────
   const numDays = Math.max(1,
     Math.round(
@@ -132,13 +172,21 @@ export async function GET(request: NextRequest) {
   // ── Header row ─────────────────────────────────────────────────────────────
   const headers: string[] = ["student_id", "assigned_role_detailed"];
 
-  // Pre-survey columns (all unique keys found in responses — demographics + attitudes)
+  // Pre-survey columns — multi-select keys expand into one column per option
   for (const k of preKeys) {
-    headers.push(`Pre_${k}`);
+    if (preMulti.has(k)) {
+      for (const opt of preOptions[k]) headers.push(`Pre_${k}__${opt}`);
+    } else {
+      headers.push(`Pre_${k}`);
+    }
   }
-  // Post-survey columns (all unique keys found in responses)
+  // Post-survey columns — same expansion
   for (const k of postKeys) {
-    headers.push(`Post_${k}`);
+    if (postMulti.has(k)) {
+      for (const opt of postOptions[k]) headers.push(`Post_${k}__${opt}`);
+    } else {
+      headers.push(`Post_${k}`);
+    }
   }
 
   // App timestamp check-in columns
@@ -170,9 +218,27 @@ export async function GET(request: NextRequest) {
     // Which window indices apply: BID → [0,2]  TID → [0,1,2]
     const activeWindows: number[] = dosing === "3x" ? [0, 1, 2] : [0, 2];
 
-    // Survey values
-    const preVals  = preKeys.map(k  => surveyVal((preSurvey[user.id]  ?? {})[k]));
-    const postVals = postKeys.map(k => surveyVal((postSurvey[user.id] ?? {})[k]));
+    // Survey values — multi-select fields expand to 1/0 per option
+    const preVals: (string | number)[] = [];
+    for (const k of preKeys) {
+      const v = (preSurvey[user.id] ?? {})[k];
+      if (preMulti.has(k)) {
+        const selected = Array.isArray(v) ? v.map(String) : (v != null ? [String(v)] : []);
+        for (const opt of preOptions[k]) preVals.push(selected.includes(opt) ? 1 : 0);
+      } else {
+        preVals.push(surveyVal(v));
+      }
+    }
+    const postVals: (string | number)[] = [];
+    for (const k of postKeys) {
+      const v = (postSurvey[user.id] ?? {})[k];
+      if (postMulti.has(k)) {
+        const selected = Array.isArray(v) ? v.map(String) : (v != null ? [String(v)] : []);
+        for (const opt of postOptions[k]) postVals.push(selected.includes(opt) ? 1 : 0);
+      } else {
+        postVals.push(surveyVal(v));
+      }
+    }
 
     // Adherence records for this user
     const userRecords = allRecords.filter(r => {
