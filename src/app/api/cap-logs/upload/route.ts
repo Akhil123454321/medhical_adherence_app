@@ -6,10 +6,32 @@ import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 // Authenticate with:  x-api-key: <CAP_UPLOAD_API_KEY>
 // Admin users can also upload via the admin UI (session cookie auth).
 // Body: multipart/form-data, one or more fields named "file" (or any name).
-// Each CSV must have the cap ID on the first line, then event,timestamp rows.
+//
+// Supported formats:
+// 1. Original format: first line = integer cap ID, then event,timestamp rows.
+// 2. Chip format: first line = "ID: <HEX>", tab-separated OPEN/CLOSED rows.
 
 function unauthorized() {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+}
+
+// Convert chip timestamp "4/2/26 13:06" to ISO string in Indiana time.
+function chipTimestampToISO(ts: string): string {
+  const parts = ts.trim().split(" ");
+  if (parts.length < 2) return "";
+  const [datePart, timePart] = parts;
+  const dateParts = datePart.split("/");
+  if (dateParts.length < 3) return "";
+  const month = parseInt(dateParts[0], 10);
+  const day = parseInt(dateParts[1], 10);
+  const shortYear = parseInt(dateParts[2], 10);
+  const year = shortYear < 100 ? 2000 + shortYear : shortYear;
+  // Indiana observes DST (UTC-4) mid-March through early November
+  const isDST = month >= 3 && month <= 11;
+  const offsetStr = isDST ? "-04:00" : "-05:00";
+  const mm = String(month).padStart(2, "0");
+  const dd = String(day).padStart(2, "0");
+  return `${year}-${mm}-${dd}T${timePart}:00${offsetStr}`;
 }
 
 export async function POST(request: NextRequest) {
@@ -37,38 +59,65 @@ export async function POST(request: NextRequest) {
   }
 
   const formData = await request.formData();
-  const uploaded: { capId: number; eventsCount: number }[] = [];
+  const uploaded: { capId: number | string; eventsCount: number }[] = [];
   const errors: { name: string; error: string }[] = [];
 
   for (const [, value] of formData.entries()) {
     if (!(value instanceof Blob)) continue;
 
+    const fileName = value instanceof File ? value.name : "unknown";
     const text = await value.text();
     const lines = text
-      .trim()
       .split("\n")
       .map((l) => l.trim())
       .filter(Boolean);
 
     if (lines.length === 0) {
-      errors.push({ name: value instanceof File ? value.name : "unknown", error: "Empty file" });
+      errors.push({ name: fileName, error: "Empty file" });
       continue;
     }
 
-    const capId = parseInt(lines[0], 10);
-    if (isNaN(capId) || capId <= 0) {
-      errors.push({
-        name: value instanceof File ? value.name : "unknown",
-        error: `First line must be a positive cap ID, got: "${lines[0]}"`,
-      });
-      continue;
+    // ── Chip format: first line starts with "ID:" ──────────────────────────
+    if (lines[0].toUpperCase().startsWith("ID:")) {
+      const hexId = lines[0].replace(/^ID:\s*/i, "").trim();
+      if (!hexId) {
+        errors.push({ name: fileName, error: "Could not extract hardware ID from first line" });
+        continue;
+      }
+
+      // Skip header row and parse tab-separated data rows
+      const eventLines: string[] = [];
+      for (const line of lines.slice(1)) {
+        if (!line.includes("\t")) continue;
+        const [statusRaw, ...tsParts] = line.split("\t");
+        const status = statusRaw.trim().toLowerCase();
+        const ts = tsParts.join("\t").trim();
+        if (status !== "open" && status !== "closed") continue;
+        const event = status === "open" ? "opened" : "closed";
+        const iso = chipTimestampToISO(ts);
+        if (!iso) continue;
+        eventLines.push(`${event},${iso}`);
+      }
+
+      const normalized = [hexId, ...eventLines].join("\n");
+      writeCapLog(hexId, normalized);
+      uploaded.push({ capId: hexId, eventsCount: eventLines.length });
+
+    // ── Original format: first line is integer cap ID ──────────────────────
+    } else {
+      const capId = parseInt(lines[0], 10);
+      if (isNaN(capId) || capId <= 0) {
+        errors.push({
+          name: fileName,
+          error: `First line must be a positive cap ID or "ID: <hex>", got: "${lines[0]}"`,
+        });
+        continue;
+      }
+
+      const eventsCount = lines.slice(1).filter((l) => l.includes(",")).length;
+      writeCapLog(capId, text);
+      uploaded.push({ capId, eventsCount });
     }
-
-    // Count valid event rows (skip header line)
-    const eventsCount = lines.slice(1).filter((l) => l.includes(",")).length;
-
-    writeCapLog(capId, text);
-    uploaded.push({ capId, eventsCount });
   }
 
   if (uploaded.length === 0 && errors.length > 0) {

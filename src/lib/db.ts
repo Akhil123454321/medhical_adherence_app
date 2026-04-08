@@ -36,13 +36,13 @@ export function writeDB<T = unknown>(collection: Collection, data: T[]): void {
   writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
 
-export function writeCapLog(capId: number, content: string): void {
+export function writeCapLog(capId: number | string, content: string): void {
   const dir = path.join(process.cwd(), "database", "cap-logs");
   mkdirSync(dir, { recursive: true });
   writeFileSync(path.join(dir, `cap-${capId}.csv`), content, "utf-8");
 }
 
-export function readCapLog(capId: number): string | null {
+export function readCapLog(capId: number | string): string | null {
   const filePath = path.join(
     process.cwd(),
     "database",

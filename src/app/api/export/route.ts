@@ -6,11 +6,11 @@ import { User, Cohort, AdherenceRecord, SurveyResponse } from "@/lib/types";
 // All timestamps are converted to Indiana time for window matching.
 const TIMEZONE = "America/Indiana/Indianapolis";
 
-// The three daily time windows defined by Pat.
+// The three daily time windows defined by Sonak.
 const WINDOWS = [
-  { label: "6-8am",  start: 6,  end: 8  },
-  { label: "12-2pm", start: 12, end: 14 },
-  { label: "6-8pm",  start: 18, end: 20 },
+  { label: "6-10am",  start: 6,  end: 10 },
+  { label: "12-3pm",  start: 12, end: 15 },
+  { label: "6-11pm",  start: 18, end: 23 },
 ];
 
 // Returns the wall-clock hour (0-23) in TIMEZONE for a given ISO timestamp.
