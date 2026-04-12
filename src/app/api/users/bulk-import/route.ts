@@ -1,7 +1,10 @@
+import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { readDB, writeDB } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 import { User, UserRole } from "@/lib/types";
+
+const DEFAULT_PASSWORD_HASH = crypto.createHash("sha256").update("MedAdhere2026!").digest("hex");
 
 // POST /api/users/bulk-import
 // Admin only. Body: JSON array of { email, role, firstName?, lastName?, cohortId? }
@@ -74,6 +77,7 @@ export async function POST(request: NextRequest) {
       firstName,
       lastName,
       email,
+      passwordHash: DEFAULT_PASSWORD_HASH,
       role,
       cohortId: row.cohortId ?? null,
       capId: null,
