@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDB, readCapLog } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
-import { User, Cohort, AdherenceRecord, SurveyResponse } from "@/lib/types";
+import { User, Cohort, AdherenceRecord, SurveyResponse, Cap } from "@/lib/types";
 
 // All timestamps are converted to Indiana time for window matching.
 const TIMEZONE = "America/Indiana/Indianapolis";
@@ -114,6 +114,7 @@ export async function GET(request: NextRequest) {
   const allUsers    = readDB<User>("users");
   const allRecords  = readDB<AdherenceRecord>("adherence-records");
   const allSurveys  = readDB<SurveyResponse>("survey-responses");
+  const allCaps     = readDB<Cap>("caps");
 
   const cohortUsers  = allUsers.filter(u => u.cohortId === cohortId && u.role !== "admin");
   const cohortIds    = new Set(cohortUsers.map(u => u.id));
@@ -252,9 +253,11 @@ export async function GET(request: NextRequest) {
     });
 
     // Cap events (patients only)
-    let capEvents: { date: string; hour: number }[] = [];
-    if (user.role === "patient" && user.capId) {
-      const raw = readCapLog(user.capId);
+    let capEvents: { date: string, hour: number }[] = [];
+    if (user.role === "patient" && user.capId !== null) {
+      const cap = allCaps.find(c => c.id === user.capId);
+      const raw = (cap?.hardwareId ? readCapLog(cap.hardwareId) : null) ?? readCapLog(user.capId);
+
       if (raw) {
         for (const line of raw.trim().split("\n").slice(1)) {
           const comma = line.indexOf(",");

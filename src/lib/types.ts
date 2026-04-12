@@ -23,6 +23,7 @@ export interface Cap {
   assignedTo: string | null;
   cohortId: string | null;
   lastSeen: string | null;
+  hardwareId: string | null; //new addition
 }
 
 export type UserRole = "admin" | "patient" | "chw";
