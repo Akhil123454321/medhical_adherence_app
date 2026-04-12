@@ -19,10 +19,21 @@ export async function GET(
   }
 
   const cap = readDB<Cap>("caps").find(c => c.id === id);
-  const raw = (cap?.hardwareId ? readCapLog(cap.hardwareId) : null) ?? readCapLog(id);
+  // If the cap record exists, always use its hardwareId (never fall back to a
+  // legacy numeric file), so we never accidentally show another cap's data.
+  // Only fall back to the numeric filename when the cap record doesn't exist.
+  let raw: string | null;
+  if (cap) {
+    raw = cap.hardwareId ? readCapLog(cap.hardwareId) : null;
+  } else {
+    raw = readCapLog(id);
+  }
 
   if (raw === null) {
-    return NextResponse.json({ error: "No log found for this cap" }, { status: 404 });
+    const reason = cap && !cap.hardwareId
+      ? "No hardware ID linked to this cap yet — map a MAC address on the MAC Address Mapping page first."
+      : "No log found for this cap";
+    return NextResponse.json({ error: reason }, { status: 404 });
   }
 
   const lines = raw.trim().split("\n").map((l) => l.trim()).filter(Boolean);

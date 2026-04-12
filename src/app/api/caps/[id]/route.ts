@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readDB, writeDB } from "@/lib/db";
+import { readDB, writeDB, reconcileCapLog } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 import { Cap } from "@/lib/types";
 
@@ -34,6 +34,10 @@ export async function PATCH(
 
   cap.hardwareId = body.hardwareId || null;
   writeDB("caps", caps);
+
+  // Cross-reference the cap log with adherence records now that the mapping
+  // is established (no-op if no log file exists yet for this hardware ID).
+  if (cap.hardwareId) reconcileCapLog(cap.hardwareId);
 
   return NextResponse.json(cap);
 }

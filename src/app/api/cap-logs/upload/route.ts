@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeCapLog } from "@/lib/db";
+import { writeCapLog, reconcileCapLog } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 
 // Kyle's office machine POSTs CSV files here after collecting caps.
@@ -92,7 +92,9 @@ export async function POST(request: NextRequest) {
 
     // ── Chip format: first line starts with "ID:" ──────────────────────────
     if (lines[0].toUpperCase().startsWith("ID:")) {
-      const hexId = lines[0].replace(/^ID:\s*/i, "").trim();
+      // Strip "ID: " prefix and any trailing commas or whitespace (some
+      // firmware versions append a trailing comma to the ID line)
+      const hexId = lines[0].replace(/^ID:\s*/i, "").replace(/[,\s]+$/, "");
       if (!hexId) {
         errors.push({ name: fileName, error: "Could not extract hardware ID from first line" });
         continue;
@@ -116,6 +118,9 @@ export async function POST(request: NextRequest) {
 
       const normalized = [hexId, ...eventLines].join("\n");
       writeCapLog(hexId, normalized);
+      // Cross-reference with adherence records if this hardware ID is already
+      // mapped to a cap/user (reconcileCapLog is a no-op if not yet mapped).
+      reconcileCapLog(hexId);
       uploaded.push({ capId: hexId, eventsCount: eventLines.length });
 
     // ── Original format: first line is integer cap ID ──────────────────────
