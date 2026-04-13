@@ -7,6 +7,7 @@ interface PatchBody {
   assignedChwId?: string | null;
   assignedPatientId?: string | null;
   dosingRegimen?: "1x" | "2x" | "3x" | null;
+  capId?: number | null;
 }
 
 export async function PATCH(
@@ -41,6 +42,9 @@ export async function PATCH(
   }
   if (body.dosingRegimen !== undefined) {
     updated.dosingRegimen = body.dosingRegimen;
+  }
+  if (body.capId !== undefined) {
+    updated.capId = body.capId;
   }
 
   users[index] = updated;

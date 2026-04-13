@@ -15,23 +15,36 @@ function unauthorized() {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-// Convert chip timestamp "4/2/26 13:06" to ISO string in Indiana time.
+// Convert chip timestamp to ISO string in Indiana time.
+// Handles both "4/2/26 13:06" (M/D/YY HH:MM) and "2026/04/02 13:06:14" (YYYY/MM/DD HH:MM:SS).
 function chipTimestampToISO(ts: string): string {
   const parts = ts.trim().split(" ");
   if (parts.length < 2) return "";
   const [datePart, timePart] = parts;
   const dateParts = datePart.split("/");
   if (dateParts.length < 3) return "";
-  const month = parseInt(dateParts[0], 10);
-  const day = parseInt(dateParts[1], 10);
-  const shortYear = parseInt(dateParts[2], 10);
-  const year = shortYear < 100 ? 2000 + shortYear : shortYear;
+  let year: number, month: number, day: number;
+  const first = parseInt(dateParts[0], 10);
+  if (first > 31) {
+    // YYYY/MM/DD format
+    year = first;
+    month = parseInt(dateParts[1], 10);
+    day = parseInt(dateParts[2], 10);
+  } else {
+    // M/D/YY format
+    month = first;
+    day = parseInt(dateParts[1], 10);
+    const shortYear = parseInt(dateParts[2], 10);
+    year = shortYear < 100 ? 2000 + shortYear : shortYear;
+  }
   // Indiana observes DST (UTC-4) mid-March through early November
   const isDST = month >= 3 && month <= 11;
   const offsetStr = isDST ? "-04:00" : "-05:00";
   const mm = String(month).padStart(2, "0");
   const dd = String(day).padStart(2, "0");
-  return `${year}-${mm}-${dd}T${timePart}:00${offsetStr}`;
+  // timePart may be HH:MM or HH:MM:SS — only append :00 if seconds missing
+  const timeFull = timePart.split(":").length >= 3 ? timePart : `${timePart}:00`;
+  return `${year}-${mm}-${dd}T${timeFull}${offsetStr}`;
 }
 
 export async function POST(request: NextRequest) {
@@ -85,13 +98,15 @@ export async function POST(request: NextRequest) {
         continue;
       }
 
-      // Skip header row and parse tab-separated data rows
+      // Skip header row and parse tab or comma-separated data rows
       const eventLines: string[] = [];
       for (const line of lines.slice(1)) {
-        if (!line.includes("\t")) continue;
-        const [statusRaw, ...tsParts] = line.split("\t");
-        const status = statusRaw.trim().toLowerCase();
-        const ts = tsParts.join("\t").trim();
+        const sep = line.includes("\t") ? "\t" : line.includes(",") ? "," : null;
+        if (!sep) continue;
+        const cols = line.split(sep);
+        if (cols.length < 2) continue;
+        const status = cols[0].trim().toLowerCase();
+        const ts = cols.slice(1).join(sep).trim();
         if (status !== "open" && status !== "closed") continue;
         const event = status === "open" ? "opened" : "closed";
         const iso = chipTimestampToISO(ts);
@@ -126,3 +141,4 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ uploaded, ...(errors.length > 0 && { errors }) }, { status: 200 });
 }
+

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readCapLog } from "@/lib/db";
+import { readCapLog, readDB } from "@/lib/db";
+import { Cap } from "@/lib/types";
 
 export interface CapLogEvent {
   event: "opened" | "closed";
@@ -17,13 +18,14 @@ export async function GET(
     return NextResponse.json({ error: "Invalid cap ID" }, { status: 400 });
   }
 
-  const raw = readCapLog(id);
+  const cap = readDB<Cap>("caps").find(c => c.id === id);
+  const raw = (cap?.hardwareId ? readCapLog(cap.hardwareId) : null) ?? readCapLog(id);
+
   if (raw === null) {
     return NextResponse.json({ error: "No log found for this cap" }, { status: 404 });
   }
 
   const lines = raw.trim().split("\n").map((l) => l.trim()).filter(Boolean);
-  // First line is the cap ID — skip it
   const events: CapLogEvent[] = [];
   for (const line of lines.slice(1)) {
     const comma = line.indexOf(",");

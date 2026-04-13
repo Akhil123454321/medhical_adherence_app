@@ -18,7 +18,7 @@ interface LogData {
 }
 
 interface UploadResult {
-  uploaded: { capId: number; eventsCount: number }[];
+  uploaded: { capId: number | string; eventsCount: number }[];
   errors?: { name: string; error: string }[];
 }
 
@@ -58,6 +58,11 @@ export default function LogsPage() {
   const [uploading, setUploading] = useState(false);
   const [uploadResult, setUploadResult] = useState<UploadResult | null>(null);
   const [uploadError, setUploadError] = useState("");
+
+  // ---- MAC mapping state (shown after chip-format upload) ----
+  const [vialMappings, setVialMappings] = useState<Record<string, string>>({});
+  const [mappingSaving, setMappingSaving] = useState(false);
+  const [mappingSaved, setMappingSaved] = useState(false);
 
   async function fetchLog() {
     const id = capIdInput.trim();
@@ -114,11 +119,39 @@ export default function LogsPage() {
       }
       setUploadResult(data);
       setUploadFiles([]);
+      // Pre-populate mapping inputs for chip-format uploads
+      const hexUploads = data.uploaded.filter((u: { capId: number | string }) => typeof u.capId === "string");
+      if (hexUploads.length > 0) {
+        const init: Record<string, string> = {};
+        hexUploads.forEach((u: { capId: number | string }) => { init[u.capId as string] = ""; });
+        setVialMappings(init);
+        setMappingSaved(false);
+      } else {
+        setVialMappings({});
+      }
     } catch {
       setUploadError("Network error — please try again.");
     } finally {
       setUploading(false);
     }
+  }
+
+  async function saveMappings() {
+    setMappingSaving(true);
+    await Promise.all(
+      Object.entries(vialMappings)
+        .filter(([, vial]) => vial.trim() !== "")
+        .map(([mac, vial]) =>
+          fetch(`/api/caps/${vial.trim()}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ hardwareId: mac }),
+          })
+        )
+    );
+    setMappingSaving(false);
+    setMappingSaved(true);
+    setVialMappings({});
   }
 
   const openCount = logData?.events.filter((e) => e.event === "opened").length ?? 0;
@@ -199,6 +232,35 @@ export default function LogsPage() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {Object.keys(vialMappings).length > 0 && !mappingSaved && (
+          <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 space-y-3">
+            <p className="text-sm font-semibold text-amber-800">Assign MAC addresses to vial numbers</p>
+            <p className="text-xs text-amber-700">These files used chip format. Enter the vial # for each MAC address so the data links correctly in exports.</p>
+            {Object.entries(vialMappings).map(([mac, vial]) => (
+              <div key={mac} className="flex items-center gap-3">
+                <span className="font-mono text-xs text-gray-700 w-40 shrink-0">{mac}</span>
+                <Input
+                  placeholder="Vial # (e.g. 12)"
+                  value={vial}
+                  onChange={e => setVialMappings(prev => ({ ...prev, [mac]: e.target.value }))}
+                  className="w-40"
+                />
+              </div>
+            ))}
+            <div className="flex justify-end">
+              <Button onClick={saveMappings} disabled={mappingSaving}>
+                {mappingSaving ? "Saving…" : "Save Mapping"}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {mappingSaved && (
+          <div className="mt-3 flex items-center gap-2 text-sm text-green-700">
+            <CheckCircle className="h-4 w-4" /> MAC address mapping saved.
           </div>
         )}
 
@@ -297,3 +359,4 @@ export default function LogsPage() {
     </div>
   );
 }
+

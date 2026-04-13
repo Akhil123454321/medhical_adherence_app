@@ -1,1 +1,2402 @@
-[]
+[
+  {
+    "id": 1,
+    "status": "assigned",
+    "assignedTo": "user-1774991084246-d7qq",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": "F83164B2F180"
+  },
+  {
+    "id": 2,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-i9fb",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 3,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-8kxw",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 4,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-35sc",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 5,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-b7nn",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 6,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-c5f0",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 7,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-dykv",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 8,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-x4l2",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 9,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-65xh",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 10,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-bmct",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 11,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-mr2q",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 12,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-k97g",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 13,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 14,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 15,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-yff1",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 16,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-ev01",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 17,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-h84m",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 18,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-yir4",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 19,
+    "status": "assigned",
+    "assignedTo": "user-1774991084248-ihoq",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 20,
+    "status": "assigned",
+    "assignedTo": "user-1774991084248-oypf",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 21,
+    "status": "assigned",
+    "assignedTo": "user-1774991084248-nj3o",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 22,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-6167",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 23,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-geor",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 24,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-1pci",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 25,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-4nax",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 26,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-loub",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 27,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-rk8o",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 28,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-mfys",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 29,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-61ln",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 30,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-vc6x",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 31,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-py1i",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 32,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-0saw",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 33,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-zyki",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 34,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-3ilz",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 35,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-zy72",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 36,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 37,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-s0un",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 38,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-5wyq",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 39,
+    "status": "assigned",
+    "assignedTo": "user-1774991084250-g1dl",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 40,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-d31s",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 41,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 42,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-xgp1",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 43,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-wnl7",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 44,
+    "status": "assigned",
+    "assignedTo": "user-1774991084249-cas5",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 45,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 46,
+    "status": "assigned",
+    "assignedTo": "user-1774991084247-o74h",
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 47,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 48,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 49,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 50,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 51,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 52,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 53,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 54,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 55,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 56,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 57,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 58,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 59,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 60,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 61,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 62,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 63,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 64,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 65,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 66,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 67,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 68,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 69,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 70,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 71,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 72,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 73,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 74,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 75,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 76,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 77,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 78,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 79,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 80,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 81,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 82,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 83,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 84,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 85,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 86,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 87,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 88,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 89,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 90,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 91,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 92,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 93,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 94,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 95,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 96,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 97,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 98,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 99,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 100,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 101,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 102,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 103,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 104,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 105,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 106,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 107,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 108,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 109,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 110,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 111,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 112,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 113,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 114,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 115,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 116,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 117,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 118,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 119,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 120,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 121,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 122,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 123,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 124,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 125,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 126,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 127,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 128,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 129,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 130,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 131,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 132,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 133,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 134,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 135,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 136,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 137,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 138,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 139,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 140,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 141,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 142,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 143,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 144,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 145,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 146,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 147,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 148,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 149,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 150,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 151,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 152,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 153,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 154,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 155,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 156,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 157,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 158,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 159,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 160,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 161,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 162,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 163,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 164,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 165,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 166,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 167,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 168,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 169,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 170,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 171,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 172,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 173,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 174,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 175,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 176,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 177,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 178,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 179,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 180,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 181,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 182,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 183,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 184,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 185,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 186,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 187,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 188,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 189,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 190,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 191,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 192,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 193,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 194,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 195,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 196,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 197,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 198,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 199,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 200,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 201,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 202,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 203,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 204,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 205,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 206,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 207,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 208,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 209,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 210,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 211,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 212,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 213,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 214,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 215,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 216,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 217,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 218,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 219,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 220,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 221,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 222,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 223,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 224,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 225,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 226,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 227,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 228,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 229,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 230,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 231,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 232,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 233,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 234,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 235,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 236,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 237,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 238,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 239,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 240,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 241,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 242,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 243,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 244,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 245,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 246,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 247,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 248,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 249,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 250,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 251,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 252,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 253,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 254,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 255,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 256,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 257,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 258,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 259,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 260,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 261,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 262,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 263,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 264,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 265,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 266,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 267,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 268,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 269,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 270,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 271,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 272,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 273,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 274,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 275,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 276,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 277,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 278,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 279,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 280,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 281,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 282,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 283,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 284,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 285,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 286,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 287,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 288,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 289,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 290,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 291,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 292,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 293,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 294,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 295,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 296,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 297,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 298,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 299,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  },
+  {
+    "id": 300,
+    "status": "available",
+    "assignedTo": null,
+    "cohortId": null,
+    "lastSeen": null,
+    "hardwareId": null
+  }
+]

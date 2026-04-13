@@ -1,7 +1,10 @@
+import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { readDB, writeDB } from "@/lib/db";
 import { verifyToken, AUTH_COOKIE } from "@/lib/auth";
 import { Cohort, User, UserRole, DosingRegimen } from "@/lib/types";
+
+const DEFAULT_PASSWORD_HASH = crypto.createHash("sha256").update("MedAdhere2026!").digest("hex");
 
 interface ImportedStudent {
   email: string;
@@ -16,7 +19,11 @@ export async function GET(request: NextRequest) {
   const payload = token ? await verifyToken(token) : null;
   if (!payload) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const cohorts = readDB<Cohort>("cohorts");
+  const today = new Date().toISOString().split("T")[0];
+  const cohorts = readDB<Cohort>("cohorts").map(c => ({
+    ...c,
+    status: today < c.startDate ? "upcoming" : today <= c.endDate ? "active" : "completed",
+  }));
   return NextResponse.json(cohorts);
 }
 
@@ -118,6 +125,7 @@ export async function POST(request: NextRequest) {
       firstName,
       lastName,
       email: normalizedEmail,
+      passwordHash: DEFAULT_PASSWORD_HASH,
       role,
       cohortId: newCohort.id,
       capId,
@@ -166,3 +174,4 @@ export async function POST(request: NextRequest) {
     { status: 201 }
   );
 }
+

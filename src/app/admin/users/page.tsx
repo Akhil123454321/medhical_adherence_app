@@ -7,7 +7,7 @@ import Select from "@/components/ui/Select";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
-import { User, UserRole, Cohort } from "@/lib/types";
+import { User, UserRole, Cohort, Cap } from "@/lib/types";
 import { ROLE_LABELS } from "@/constants";
 import { Upload, CheckCircle, AlertCircle, SkipForward } from "lucide-react";
 
@@ -77,6 +77,8 @@ export default function UsersPage() {
   const [editPatientId, setEditPatientId] = useState<string>("");
   const [editDosing, setEditDosing] = useState<string>("");
   const [saving, setSaving] = useState(false);
+  const [editCapId, setEditCapId] = useState<string>("");
+  const [caps, setCaps] = useState<Cap[]>([]);
   const [saveError, setSaveError] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [resetting, setResetting] = useState(false);
@@ -141,10 +143,12 @@ export default function UsersPage() {
     Promise.all([
       fetch("/api/users").then((r) => r.json()),
       fetch("/api/cohorts").then((r) => r.json()),
+      fetch("/api/caps").then((r) => r.json()),
     ])
-      .then(([usersData, cohortsData]: [User[], Cohort[]]) => {
+      .then(([usersData, cohortsData, capsData]: [User[], Cohort[], Cap[]]) => {
         setUsers(usersData);
         setCohorts(cohortsData);
+        setCaps(capsData);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -179,6 +183,7 @@ export default function UsersPage() {
     setEditChwId(user.assignedChwId ?? "");
     setEditPatientId(user.assignedPatientId ?? "");
     setEditDosing(user.dosingRegimen ?? "");
+    setEditCapId(user.capId ? String(user.capId) : "");
     setSaveError("");
     setSaveSuccess(false);
     setResetSuccess(false);
@@ -198,6 +203,7 @@ export default function UsersPage() {
     const body: Record<string, unknown> = {
       role: editRole,
       dosingRegimen: editDosing || null,
+      capId: editCapId ? parseInt(editCapId, 10) : null,
     };
     if (editRole === "patient") {
       body.assignedChwId = editChwId || null;
@@ -238,7 +244,8 @@ export default function UsersPage() {
     (editRole !== selectedUser.role ||
       (editChwId || null) !== selectedUser.assignedChwId ||
       (editPatientId || null) !== selectedUser.assignedPatientId ||
-      (editDosing || null) !== selectedUser.dosingRegimen);
+      (editDosing || null) !== selectedUser.dosingRegimen ||
+      (editCapId ? parseInt(editCapId, 10): null) !== selectedUser.capId);
 
   return (
     <div className="space-y-6">
@@ -376,10 +383,12 @@ export default function UsersPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm font-medium text-gray-500">Cap ID</p>
-                <p className="text-gray-900">
-                  {selectedUser.capId ? `#${selectedUser.capId}` : "—"}
-                </p>
+                <p className="text-sm font-medium text-gray-500">Cap / Vial #</p>
+                <Input
+                  placeholder="e.g. 30"
+                  value={editCapId}
+                  onChange={(e) => setEditCapId(e.target.value.replace(/\D/g, ""))}
+                />
               </div>
               {selectedUser.dosingRegimen && (
                 <div>

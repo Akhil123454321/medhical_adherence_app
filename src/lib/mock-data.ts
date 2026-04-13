@@ -77,6 +77,7 @@ export const mockCaps: Cap[] = Array.from({ length: 300 }, (_, i) => {
     assignedTo,
     cohortId,
     lastSeen: status === "assigned" ? "2025-04-01T10:30:00Z" : null,
+    hardwareId: null,
   };
 });
 
