@@ -58,11 +58,17 @@ export function readCapLog(capId: number | string): string | null {
 
 /**
  * Cross-reference a cap's event log against the assigned user's adherence
- * records and set capOpened=true where a physical "opened" event falls
- * within ±4 hours of the record's reportTimestamp.
+ * records.
  *
- * This is additive — it only sets capOpened to true, never to false.
- * Returns the number of records updated.
+ * For each physical "opened" event:
+ *   - If a self-reported adherence record exists within ±4 hours → mark it
+ *     capOpened=true (corroboration).
+ *   - If no self-report exists within ±4 hours AND no cap-generated record
+ *     already covers this event (within 30 min) → create a new adherence
+ *     record so the physical cap data is always visible in the dashboard.
+ *
+ * Additive only — never sets capOpened to false on existing records.
+ * Returns the number of records updated or created.
  */
 export function reconcileCapLog(hardwareId: string): number {
   // Find the cap with this hardware ID
@@ -93,43 +99,76 @@ export function reconcileCapLog(hardwareId: string): number {
   if (openTimes.length === 0) return 0;
 
   const FOUR_HOURS = 4 * 60 * 60 * 1000;
+  const THIRTY_MIN  = 30 * 60 * 1000;
 
   interface AdherenceRow {
     id: string;
+    date: string;
     userId: string;
+    recordedBy: string;
+    recordType: string;
+    selfReported: boolean;
     capOpened: boolean;
     capTimestamp: string | null;
     reportTimestamp: string | null;
   }
   const records = readDB<AdherenceRow>("adherence-records");
-  let updated = 0;
+  let changed = 0;
 
-  for (const record of records) {
-    if (record.userId !== user.id) continue;
-    if (record.capOpened) continue; // already confirmed
-    const reportTs = record.reportTimestamp ? new Date(record.reportTimestamp).getTime() : NaN;
-    if (isNaN(reportTs)) continue;
+  for (const openTs of openTimes) {
+    // 1. Check whether an existing record for this user already covers this event
+    //    (either already reconciled, or within ±4 hours of a self-report)
+    let matched = false;
 
-    // Find the closest "opened" event within ±4 hours
-    let closestDiff = Infinity;
-    let closestIso = "";
-    for (const openTs of openTimes) {
-      const diff = Math.abs(openTs - reportTs);
-      if (diff <= FOUR_HOURS && diff < closestDiff) {
-        closestDiff = diff;
-        closestIso = new Date(openTs).toISOString();
+    for (const record of records) {
+      if (record.userId !== user.id) continue;
+
+      // Already cap-confirmed — is it this event?
+      if (record.capOpened && record.capTimestamp) {
+        const existingCapTs = new Date(record.capTimestamp).getTime();
+        if (Math.abs(existingCapTs - openTs) <= THIRTY_MIN) {
+          matched = true;
+          break;
+        }
+      }
+
+      // Unconfirmed record within ±4 hours — corroborate it
+      if (!record.capOpened) {
+        const reportTs = record.reportTimestamp
+          ? new Date(record.reportTimestamp).getTime()
+          : NaN;
+        if (!isNaN(reportTs) && Math.abs(openTs - reportTs) <= FOUR_HOURS) {
+          record.capOpened = true;
+          record.capTimestamp = new Date(openTs).toISOString();
+          matched = true;
+          changed++;
+          break;
+        }
       }
     }
 
-    if (closestIso) {
-      record.capOpened = true;
-      record.capTimestamp = closestIso;
-      updated++;
-    }
+    if (matched) continue;
+
+    // 2. No existing record covers this cap open — create one so the physical
+    //    data is always visible in the dashboard (selfReported=false marks it
+    //    as cap-generated rather than a patient tap).
+    const isoTs = new Date(openTs).toISOString();
+    records.push({
+      id: `ar-cap-${openTs}-${Math.random().toString(36).slice(2, 6)}`,
+      date: isoTs.split("T")[0],
+      userId: user.id,
+      recordedBy: "cap",
+      recordType: "self",
+      selfReported: false,
+      capOpened: true,
+      capTimestamp: isoTs,
+      reportTimestamp: null,
+    });
+    changed++;
   }
 
-  if (updated > 0) {
+  if (changed > 0) {
     writeDB("adherence-records", records);
   }
-  return updated;
+  return changed;
 }

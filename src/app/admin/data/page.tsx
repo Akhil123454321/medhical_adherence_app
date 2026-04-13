@@ -75,7 +75,9 @@ export default function DataPage() {
     const byDate: Record<string, { self: number; chwRecorded: number; chwNotified: number; capOpened: number }> = {};
     records.forEach((r) => {
       if (!byDate[r.date]) byDate[r.date] = { self: 0, chwRecorded: 0, chwNotified: 0, capOpened: 0 };
-      if (r.recordType === "self") byDate[r.date].self++;
+      // selfReported=true means patient tapped the button; selfReported=false
+      // means the record was generated from the physical cap log.
+      if (r.selfReported) byDate[r.date].self++;
       if (r.recordType === "chw_recorded") byDate[r.date].chwRecorded++;
       if (r.recordType === "chw_notified") byDate[r.date].chwNotified++;
       if (r.capOpened) byDate[r.date].capOpened++;
@@ -83,7 +85,7 @@ export default function DataPage() {
     return Object.entries(byDate)
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([date, d]) => {
-        const total = d.self + d.chwRecorded + d.chwNotified || 1;
+        const total = d.self + d.chwRecorded + d.chwNotified + d.capOpened || 1;
         return {
           date: new Date(date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }),
           selfReported: Math.round((d.self / total) * 100),
@@ -96,7 +98,7 @@ export default function DataPage() {
     const total = records.length;
     if (total === 0) return { self: 0, chwRecorded: 0, chwNotified: 0, capOpened: 0 };
     return {
-      self: records.filter((r) => r.recordType === "self").length,
+      self: records.filter((r) => r.selfReported).length,
       chwRecorded: records.filter((r) => r.recordType === "chw_recorded").length,
       chwNotified: records.filter((r) => r.recordType === "chw_notified").length,
       capOpened: records.filter((r) => r.capOpened).length,
@@ -106,7 +108,7 @@ export default function DataPage() {
   const userAdherence = useMemo(() => {
     return cohortUsers.map((user) => {
       const userRecords = records.filter((r) => r.userId === user.id);
-      const self = userRecords.filter((r) => r.recordType === "self").length;
+      const self = userRecords.filter((r) => r.selfReported).length;
       const chwRecorded = userRecords.filter((r) => r.recordType === "chw_recorded").length;
       const chwNotified = userRecords.filter((r) => r.recordType === "chw_notified").length;
       const capOpened = userRecords.filter((r) => r.capOpened).length;

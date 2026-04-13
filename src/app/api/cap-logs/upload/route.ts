@@ -44,7 +44,9 @@ function chipTimestampToISO(ts: string): string {
   const dd = String(day).padStart(2, "0");
   // timePart may be HH:MM or HH:MM:SS — only append :00 if seconds missing
   const timeFull = timePart.split(":").length >= 3 ? timePart : `${timePart}:00`;
-  return `${year}-${mm}-${dd}T${timeFull}${offsetStr}`;
+  // Zero-pad single-digit hours (e.g. "0:16:00" → "00:16:00") — ISO 8601 requires HH
+  const timePadded = timeFull.replace(/^(\d):/, "0$1:");
+  return `${year}-${mm}-${dd}T${timePadded}${offsetStr}`;
 }
 
 export async function POST(request: NextRequest) {
