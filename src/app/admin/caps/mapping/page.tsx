@@ -45,7 +45,7 @@ async function saveCap(capId: number) {
     setTimeout(() => setSaved(null), 2000);
 }
 
-const assignedCaps = caps.filter(c => c.status === "assigned");
+const assignedCaps = caps.filter(c => c.status !== "broken");
 
 return (
     <div className="space-y-6">

@@ -7,12 +7,14 @@ import {
   HelpCircle,
   BarChart3,
   ScrollText,
+  Link2,
 } from "lucide-react";
 
 export const NAV_ITEMS = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Cohorts", href: "/admin/cohorts", icon: FlaskConical },
   { label: "Cap Inventory", href: "/admin/caps", icon: Package },
+  { label: "Cap Mapping", href: "/admin/caps/mapping", icon: Link2 },
   { label: "Cap Logs", href: "/admin/logs", icon: ScrollText },
   { label: "Randomization", href: "/admin/randomization", icon: Shuffle },
   { label: "Question Bank", href: "/admin/questions", icon: HelpCircle },
