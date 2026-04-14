@@ -32,6 +32,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Account pages (change password, etc.) — any authenticated user
+  if (pathname.startsWith("/account")) {
+    if (!payload) return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.next();
+  }
+
   // Post-survey — must be logged in as patient or CHW
   if (pathname.startsWith("/survey")) {
     if (!payload) return NextResponse.redirect(new URL("/login", request.url));

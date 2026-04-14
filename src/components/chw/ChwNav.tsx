@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { HeartPulse, LogOut, User } from "lucide-react";
+import { HeartPulse, LogOut, User, KeyRound } from "lucide-react";
 import NotificationBell from "@/components/ui/NotificationBell";
 
 interface ChwNavProps {
@@ -36,6 +37,13 @@ export default function ChwNav({ userName }: ChwNavProps) {
             <span>{userName}</span>
           </div>
           <NotificationBell />
+          <Link
+            href="/account/change-password"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+            title="Change password"
+          >
+            <KeyRound className="h-4 w-4" />
+          </Link>
           <button
             onClick={handleLogout}
             className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
