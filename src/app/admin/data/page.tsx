@@ -41,6 +41,7 @@ export default function DataPage() {
   const [chartType, setChartType] = useState<"bar" | "line">("bar");
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState("");
 
   // Load cohorts and users once
   useEffect(() => {
@@ -141,17 +142,26 @@ export default function DataPage() {
   async function downloadCSV() {
     if (!selectedCohort) return;
     setExporting(true);
+    setExportError("");
     try {
       const res = await fetch(`/api/export?cohortId=${selectedCohort}`);
-      if (!res.ok) return;
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setExportError(data.error ?? `Export failed (${res.status})`);
+        return;
+      }
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       a.download = res.headers.get("Content-Disposition")?.match(/filename="(.+)"/)?.[1]
         ?? "export.csv";
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
+    } catch {
+      setExportError("Network error — please try again.");
     } finally {
       setExporting(false);
     }
@@ -173,14 +183,19 @@ export default function DataPage() {
             options={cohorts.map((c) => ({ value: c.id, label: c.name }))}
             className="w-56"
           />
-          <button
-            onClick={downloadCSV}
-            disabled={!selectedCohort || exporting}
-            className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-50 transition-colors"
-          >
-            <Download className="h-4 w-4" />
-            {exporting ? "Exporting…" : "Export CSV"}
-          </button>
+          <div className="flex flex-col items-end gap-1">
+            <button
+              onClick={downloadCSV}
+              disabled={!selectedCohort || exporting}
+              className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-50 transition-colors"
+            >
+              <Download className="h-4 w-4" />
+              {exporting ? "Exporting…" : "Export CSV"}
+            </button>
+            {exportError && (
+              <p className="text-xs text-red-600">{exportError}</p>
+            )}
+          </div>
         </div>
       </div>
 
