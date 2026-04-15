@@ -14,19 +14,30 @@ const WINDOWS = [
 ];
 
 // Returns the wall-clock hour (0-23) in TIMEZONE for a given ISO timestamp.
+// Zero-pads single-digit hours before parsing (e.g. "T0:16" → "T00:16") to
+// handle timestamps written by older firmware before the padding fix.
+function parseTs(iso: string): Date {
+  const padded = iso.replace(/T(\d):/, "T0$1:");
+  return new Date(padded);
+}
+
 function localHour(iso: string): number {
+  const d = parseTs(iso);
+  if (isNaN(d.getTime())) return -1;
   const h = new Intl.DateTimeFormat("en-US", {
     hour: "numeric", hour12: false, timeZone: TIMEZONE,
-  }).format(new Date(iso));
+  }).format(d);
   const n = parseInt(h, 10);
   return isNaN(n) ? -1 : (n === 24 ? 0 : n);
 }
 
 // Returns the calendar date string "YYYY-MM-DD" in TIMEZONE.
 function localDate(iso: string): string {
+  const d = parseTs(iso);
+  if (isNaN(d.getTime())) return "";
   return new Intl.DateTimeFormat("en-CA", {
     year: "numeric", month: "2-digit", day: "2-digit", timeZone: TIMEZONE,
-  }).format(new Date(iso));
+  }).format(d);
 }
 
 function addDays(dateStr: string, n: number): string {
@@ -106,6 +117,17 @@ export async function GET(request: NextRequest) {
 
   const cohortId = new URL(request.url).searchParams.get("cohortId");
   if (!cohortId) return NextResponse.json({ error: "cohortId required" }, { status: 400 });
+
+  try {
+    return buildExport(cohortId);
+  } catch (err) {
+    const msg = err instanceof Error ? `${err.message}\n${err.stack}` : String(err);
+    console.error("[export] 500 error:", msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
+  }
+}
+
+function buildExport(cohortId: string): NextResponse {
 
   // ── Load all data ──────────────────────────────────────────────────────────
   const cohort = readDB<Cohort>("cohorts").find(c => c.id === cohortId);
