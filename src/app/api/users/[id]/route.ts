@@ -3,6 +3,7 @@ import { readDB, writeDB } from "@/lib/db";
 import { User, UserRole } from "@/lib/types";
 
 interface PatchBody {
+  email?: string;
   role?: UserRole;
   assignedChwId?: string | null;
   assignedPatientId?: string | null;
@@ -30,6 +31,20 @@ export async function PATCH(
   }
 
   const updated: User = { ...users[index] };
+
+  if (body.email !== undefined) {
+    const newEmail = body.email.trim().toLowerCase();
+    if (!newEmail) {
+      return NextResponse.json({ error: "Email cannot be empty" }, { status: 400 });
+    }
+    const duplicate = users.find(
+      (u) => u.email.toLowerCase() === newEmail && u.id !== id
+    );
+    if (duplicate) {
+      return NextResponse.json({ error: "That email is already in use" }, { status: 400 });
+    }
+    updated.email = newEmail;
+  }
 
   if (body.role !== undefined) {
     updated.role = body.role;

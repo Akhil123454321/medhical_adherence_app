@@ -72,6 +72,7 @@ export default function UsersPage() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   // Edit state
+  const [editEmail, setEditEmail] = useState<string>("");
   const [editRole, setEditRole] = useState<UserRole>("patient");
   const [editChwId, setEditChwId] = useState<string>("");
   const [editPatientId, setEditPatientId] = useState<string>("");
@@ -179,6 +180,7 @@ export default function UsersPage() {
 
   function openModal(user: User) {
     setSelectedUser(user);
+    setEditEmail(user.email);
     setEditRole(user.role);
     setEditChwId(user.assignedChwId ?? "");
     setEditPatientId(user.assignedPatientId ?? "");
@@ -201,6 +203,7 @@ export default function UsersPage() {
     setSaveError("");
 
     const body: Record<string, unknown> = {
+      email: editEmail.trim(),
       role: editRole,
       dosingRegimen: editDosing || null,
       capId: editCapId ? parseInt(editCapId, 10) : null,
@@ -241,7 +244,8 @@ export default function UsersPage() {
 
   const isDirty =
     selectedUser &&
-    (editRole !== selectedUser.role ||
+    (editEmail.trim() !== selectedUser.email ||
+      editRole !== selectedUser.role ||
       (editChwId || null) !== selectedUser.assignedChwId ||
       (editPatientId || null) !== selectedUser.assignedPatientId ||
       (editDosing || null) !== selectedUser.dosingRegimen ||
@@ -369,8 +373,13 @@ export default function UsersPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm font-medium text-gray-500">Email</p>
-                <p className="text-gray-900">{selectedUser.email}</p>
+                <p className="mb-1.5 text-sm font-medium text-gray-500">Email</p>
+                <Input
+                  type="email"
+                  value={editEmail}
+                  onChange={(e) => setEditEmail(e.target.value)}
+                  placeholder="user@example.com"
+                />
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">Cohort</p>
