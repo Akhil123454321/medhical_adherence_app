@@ -8,7 +8,7 @@ import Modal from "@/components/ui/Modal";
 import CohortForm from "@/components/admin/CohortForm";
 import { formatDate } from "@/lib/utils";
 import { Cohort } from "@/lib/types";
-import { Plus, Calendar, MapPin, Users, Key } from "lucide-react";
+import { Plus, Calendar, MapPin, Users, Key, Pencil } from "lucide-react";
 
 interface CreatedUser {
   email: string;
@@ -22,6 +22,10 @@ export default function CohortsPage() {
   const [selectedCohort, setSelectedCohort] = useState<Cohort | null>(null);
   const [createdUsers, setCreatedUsers] = useState<CreatedUser[]>([]);
   const [showCredentials, setShowCredentials] = useState(false);
+  const [editingDates, setEditingDates] = useState(false);
+  const [editStartDate, setEditStartDate] = useState("");
+  const [editEndDate, setEditEndDate] = useState("");
+  const [savingDates, setSavingDates] = useState(false);
 
   useEffect(() => {
     fetch("/api/cohorts")
@@ -183,7 +187,7 @@ export default function CohortsPage() {
       {/* Cohort detail modal */}
       <Modal
         open={!!selectedCohort}
-        onClose={() => setSelectedCohort(null)}
+        onClose={() => { setSelectedCohort(null); setEditingDates(false); }}
         title={selectedCohort?.name || ""}
       >
         {selectedCohort && (
@@ -195,17 +199,74 @@ export default function CohortsPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm font-medium text-gray-500">Start Date</p>
-                <p className="text-gray-900">
-                  {formatDate(selectedCohort.startDate)}
-                </p>
+                {editingDates ? (
+                  <input
+                    type="date"
+                    value={editStartDate}
+                    onChange={(e) => setEditStartDate(e.target.value)}
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                  />
+                ) : (
+                  <p className="text-gray-900">{formatDate(selectedCohort.startDate)}</p>
+                )}
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">End Date</p>
-                <p className="text-gray-900">
-                  {formatDate(selectedCohort.endDate)}
-                </p>
+                {editingDates ? (
+                  <input
+                    type="date"
+                    value={editEndDate}
+                    onChange={(e) => setEditEndDate(e.target.value)}
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                  />
+                ) : (
+                  <p className="text-gray-900">{formatDate(selectedCohort.endDate)}</p>
+                )}
               </div>
             </div>
+            {editingDates ? (
+              <div className="flex gap-2">
+                <button
+                  onClick={async () => {
+                    setSavingDates(true);
+                    const res = await fetch(`/api/cohorts/${selectedCohort.id}`, {
+                      method: "PATCH",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ startDate: editStartDate, endDate: editEndDate }),
+                    });
+                    if (res.ok) {
+                      const updated = await res.json();
+                      setCohorts((prev) => prev.map((c) => c.id === updated.id ? updated : c));
+                      setSelectedCohort(updated);
+                    }
+                    setSavingDates(false);
+                    setEditingDates(false);
+                  }}
+                  disabled={savingDates}
+                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+                >
+                  {savingDates ? "Saving…" : "Save dates"}
+                </button>
+                <button
+                  onClick={() => setEditingDates(false)}
+                  className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  setEditStartDate(selectedCohort.startDate);
+                  setEditEndDate(selectedCohort.endDate);
+                  setEditingDates(true);
+                }}
+                className="flex items-center gap-1.5 text-sm text-indigo-600 hover:text-indigo-700"
+              >
+                <Pencil className="h-3.5 w-3.5" />
+                Edit dates
+              </button>
+            )}
             <div>
               <p className="text-sm font-medium text-gray-500">Description</p>
               <p className="text-gray-900">{selectedCohort.description}</p>

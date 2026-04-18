@@ -9,7 +9,7 @@ import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import { User, UserRole, Cohort, Cap } from "@/lib/types";
 import { ROLE_LABELS } from "@/constants";
-import { Upload, CheckCircle, AlertCircle, SkipForward } from "lucide-react";
+import { Upload, CheckCircle, AlertCircle, SkipForward, Wrench } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // CSV parsing helpers
@@ -84,6 +84,8 @@ export default function UsersPage() {
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [resetting, setResetting] = useState(false);
   const [resetSuccess, setResetSuccess] = useState(false);
+  const [repairing, setRepairing] = useState(false);
+  const [repairResult, setRepairResult] = useState<string>("");
 
   // ---------- Bulk import state ----------
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -260,13 +262,43 @@ export default function UsersPage() {
             View and manage all users across cohorts
           </p>
         </div>
-        <button
-          onClick={openImportModal}
-          className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-100 transition-colors"
-        >
-          <Upload className="h-4 w-4" />
-          Import CSV
-        </button>
+        <div className="flex items-center gap-2">
+          {repairResult && (
+            <span className="text-xs text-green-700">{repairResult}</span>
+          )}
+          <button
+            onClick={async () => {
+              setRepairing(true);
+              setRepairResult("");
+              try {
+                const res = await fetch("/api/admin/repair-assignments", { method: "POST" });
+                const data = await res.json();
+                if (res.ok) {
+                  setRepairResult(`Fixed ${data.chwPatientLinksFixed} CHW links, ${data.capAssignmentsFixed} cap assignments`);
+                  const updated = await fetch("/api/users").then((r) => r.json());
+                  setUsers(updated);
+                } else {
+                  setRepairResult(data.error ?? "Repair failed");
+                }
+              } finally {
+                setRepairing(false);
+              }
+            }}
+            disabled={repairing}
+            title="Sync CHW-patient links and cap assignments from user records"
+            className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-60 transition-colors"
+          >
+            <Wrench className="h-4 w-4" />
+            {repairing ? "Repairing…" : "Repair Assignments"}
+          </button>
+          <button
+            onClick={openImportModal}
+            className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-100 transition-colors"
+          >
+            <Upload className="h-4 w-4" />
+            Import CSV
+          </button>
+        </div>
       </div>
 
       <Card>
